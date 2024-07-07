@@ -1,0 +1,14 @@
+[container]
+image = "docker.io/library/archlinux"
+
+[packages]
+system = "archlinux"
+dependencies = [
+    "aarch64-linux-gnu-gcc",
+    "cargo-deb",
+    "gcc",
+    "make",
+    "musl",
+    "rustup",
+    "wget",
+]

@@ -1,0 +1,48 @@
+[meta]
+repo = "https://github.com/kpcyrd/acme-redirect"
+version = "0.6.2"
+suffix = "~kpcyrd1"
+patches = [
+    "vendored-openssl.patch",
+]
+
+[[checksums]]
+path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.6.2~kpcyrd1_amd64.deb"
+checksum = "sha256:f45d72e48e63037caeb44e25e1e47918ca157af963c74d45afc6b459375ffa1a"
+
+[[checksums]]
+path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.6.2~kpcyrd1_arm64.deb"
+checksum = "sha256:93eab507fc8ca69b8349d6239a6f03ab1c9b6077ad0560b21db4f0bc112f36f3"
+
+[build]
+cmd = """
+set -e
+
+# 2024-01-01
+export SOURCE_DATE_EPOCH=1704067200
+
+wget https://www.musl-libc.org/releases/musl-1.2.5.tar.gz
+echo 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4  musl-1.2.5.tar.gz' | sha256sum -c -
+tar xf musl-1.2.5.tar.gz
+
+pushd musl-1.2.5/
+CROSS_COMPILE="aarch64-linux-gnu-" \
+./configure --prefix=/usr/aarch64-linux-musl/lib/musl \
+  --exec-prefix=/usr/aarch64-linux-musl \
+  --enable-wrapper=all \
+  --target="aarch64-linux-musl" \
+  CFLAGS="-ffat-lto-objects"
+make
+make DESTDIR="/" install
+mv -v /lib/ld-musl-aarch64.so* /usr/aarch64-linux-musl/lib/
+popd
+
+mkdir -vp ~/.cargo
+printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
+
+rustup default 1.79.0
+rustup target add aarch64-unknown-linux-musl
+rustup target add x86_64-unknown-linux-musl
+cargo deb --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+"""

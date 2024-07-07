@@ -1,0 +1,46 @@
+[meta]
+repo = "https://github.com/spytrap-org/spytrap-adb"
+version = "0.3.1"
+checkout = "origin/main"
+suffix = "~kpcyrd0"
+
+[[checksums]]
+path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.1~kpcyrd0_amd64.deb"
+checksum = "sha256:59cb9c302356226cca63af24218c98d34357c399c2c7dd96f7bdac5097a5b1d4"
+
+[[checksums]]
+path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.1~kpcyrd0_arm64.deb"
+checksum = "sha256:08330cf2399691d3f2ba518c795a417b5dee07f6db616ad356689172216c24bb"
+
+[build]
+cmd = """
+set -e
+
+# 2024-01-01
+export SOURCE_DATE_EPOCH=1704067200
+
+wget https://www.musl-libc.org/releases/musl-1.2.5.tar.gz
+echo 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4  musl-1.2.5.tar.gz' | sha256sum -c -
+tar xf musl-1.2.5.tar.gz
+
+pushd musl-1.2.5/
+CROSS_COMPILE="aarch64-linux-gnu-" \
+./configure --prefix=/usr/aarch64-linux-musl/lib/musl \
+  --exec-prefix=/usr/aarch64-linux-musl \
+  --enable-wrapper=all \
+  --target="aarch64-linux-musl" \
+  CFLAGS="-ffat-lto-objects"
+make
+make DESTDIR="/" install
+mv -v /lib/ld-musl-aarch64.so* /usr/aarch64-linux-musl/lib/
+popd
+
+mkdir -vp ~/.cargo
+printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
+
+rustup default 1.79.0
+rustup target add aarch64-unknown-linux-musl
+rustup target add x86_64-unknown-linux-musl
+cargo deb --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+"""
