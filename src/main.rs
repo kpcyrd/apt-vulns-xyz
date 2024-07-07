@@ -84,7 +84,7 @@ pub struct Build {
 
 fn prepare_source(name: &str, config: &Config) -> Result<()> {
     let path = format!("sources/{name}");
-    if !fs::metadata(&path).is_ok() {
+    if fs::metadata(&path).is_err() {
         process::Command::new("git")
             .args(["init", "--bare", "-qb", "main", &path])
             .status()?;
@@ -143,12 +143,12 @@ fn main() -> Result<()> {
 
     if let Some(name) = args.name {
         let path = format!("pkgs/{name}/build.toml");
-        let buf = fs::read_to_string(&path)?;
+        let buf = fs::read_to_string(path)?;
         let mut config = toml::from_str::<Config>(&buf)?;
 
         info!("Preparing git checkout");
         if !args.skip_fetch {
-            prepare_source(&name, &mut config)?;
+            prepare_source(&name, &config)?;
         }
 
         let build_path = format!("build/{name}");

@@ -1,0 +1,71 @@
+name: Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '0 9 * * 1'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        pkg:
+          - acme-redirect
+          - authoscope
+          - spytrap-adb
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: sudo apt-get install -y repro-env
+
+    - name: Set up cargo cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/repro-env/pkgs/
+          ~/.cargo/bin/
+          ~/.cargo/git/db/
+          ~/.cargo/registry/cache/
+          ~/.cargo/registry/index/
+          target/
+        key: ${{ runner.os }}-pkg-${{ matrix.pkg }}-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: ${{ runner.os }}-pkg-${{ matrix.pkg }}-
+
+    - name: Build
+      run: cargo run -- ${{ matrix.pkg }}
+
+  unit-test:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up cargo cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+          target/
+        key: ${{ runner.os }}-cargo-debug-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: ${{ runner.os }}-cargo-debug-
+
+    - name: Run clippy
+      run: cargo clippy ${{ matrix.os.features }} -- -D warnings
+
+  fmt:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run cargo fmt
+      run: cargo fmt --all -- --check
