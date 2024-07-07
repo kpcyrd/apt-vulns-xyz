@@ -108,6 +108,18 @@ What this does (in order)
 
 The build environment is documented in `pkgs/*/repro-env.toml` and `pkgs/*/repro-env.lock`.
 
+## Updating the build environment
+
+You can re-resolve the build environment using:
+
+```
+repro-env -C pkgs/<package> update
+```
+
+Note you may still need to bump versions referenced inline in `pkgs/<package>/build.toml`.
+
+When doing this you likely also need to update the `[[checksums]]` rules.
+
 ## Trivia
 
 This tooling replaces my old shell-scripted apt tooling that I started working on in May 2020 but never published.
