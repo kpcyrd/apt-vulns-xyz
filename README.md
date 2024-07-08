@@ -26,7 +26,7 @@ Built artifacts are available at:
 ./build/<package>/target/x86_64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_amd64.deb
 ```
 
-## Reproducible builds
+## Reproducible Builds
 
 The following packages have been fully integrated into the latest tooling:
 
@@ -40,6 +40,22 @@ The following packages have been fully integrated into the latest tooling:
 They are expected to be bit-for-bit independently reproducible from source code, check the corresponding git tag.
 
 Old versions and packages that don't build with the new tooling yet have been imported but can't be reproduced (without a significant amount of effort).
+
+## Dependency tree vulnerability scanning
+
+Packages listed above also have binaries with their resolved dependency tree embedded into them in the `.dep-v0` linker section. The binaries installed into the system can be scanned for known-vulnerable source-code inputs with:
+
+```
+cargo audit bin /usr/bin/<name>
+```
+
+The embedded json data can also be accessed directly, by zlib decompressing the section:
+
+```
+objcopy --dump-section .dep-v0=/dev/stdout /usr/bin/<name> | pigz -zd -
+```
+
+Feel free to open github issues in case there's anything needing attention.
 
 ## Configuration
 
@@ -70,6 +86,7 @@ wget https://www.musl-libc.org/releases/musl-1.2.5.tar.gz
 echo 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4  musl-1.2.5.tar.gz' | sha256sum -c -
 tar xf musl-1.2.5.tar.gz
 
+# Arch Linux currently doesn't have cross-compiled musl libc, so we build our own
 pushd musl-1.2.5/
 CROSS_COMPILE="aarch64-linux-gnu-" \
 ./configure --prefix=/usr/aarch64-linux-musl/lib/musl \
@@ -82,14 +99,20 @@ make DESTDIR="/" install
 mv -v /lib/ld-musl-aarch64.so* /usr/aarch64-linux-musl/lib/
 popd
 
+# configure the right linker for cross compile
 mkdir -vp ~/.cargo
 printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
 
+# select a specific Rust release so it's documented which one has been used
 rustup default 1.79.0
 rustup target add aarch64-unknown-linux-musl
 rustup target add x86_64-unknown-linux-musl
-cargo deb --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
-cargo deb --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+
+cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
+cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+
+cargo auditable build --verbose --release --locked --target x86_64-unknown-linux-musl
+cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """
 ```
 
@@ -102,9 +125,10 @@ What this does (in order)
 - Configure a `SOURCE_DATE_EPOCH` for file timestamps used inside the .deb
 - Download and compile a specific musl libc version for aarch64 cross-compile
 - Configure the linker we just built for Rust cross-compiling
-- Select a specific Rust release
+- Select a specific Rust release so it's documented which one has been used
 - Download musl toolchains for aarch64 and x86_64
-- Run cargo-deb to build .deb files containing statically linked binaries
+- Build a statically linked release binary and embed the resolved dependency tree into a linker section for documentation purpose
+- Use cargo-deb to bundle the binary into a .deb file
 
 The build environment is documented in `pkgs/*/repro-env.toml` and `pkgs/*/repro-env.lock`.
 

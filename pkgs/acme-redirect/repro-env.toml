@@ -5,6 +5,7 @@ image = "docker.io/library/archlinux"
 system = "archlinux"
 dependencies = [
     "aarch64-linux-gnu-gcc",
+    "cargo-auditable",
     "cargo-deb",
     "gcc",
     "make",

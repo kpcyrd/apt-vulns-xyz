@@ -122,12 +122,20 @@ sha256 = "aabd5b2b7030716ccdd465d607e734e851fe4a01adf8293a3968fe22eb89ce9b"
 signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZnHT6wAKCRC4rAhgDxCM32TfAP9M7w9OInVTLWYe9Q3n5YjC/OsCdE9pQ4SycnSIIWy/MAEAh6r+KxhDasyC/DZzEYHPac52Ld1X9T+RsnUb7JWfVw8="
 
 [[package]]
-name = "cargo-deb"
-version = "2.3.0-1"
+name = "cargo-auditable"
+version = "0.6.4-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/c/cargo-deb/cargo-deb-2.3.0-1-x86_64.pkg.tar.zst"
-sha256 = "537a26f5a9b057689f42b7b37cb903c95ac0b982908e237e20a652c577246fbe"
-signature = "iQIzBAABCAAdFiEEFl4P98SMIm4ew2On+DQkgks+S5AFAmZrA44ACgkQ+DQkgks+S5AOeA/9FVP0P9inRSQTYfG9VphaTxS2MIB6+HPOR5AaV5z/M0fSO8ux92vtbQcWMKrccttwk5rL6evxJAkMzYSXRJ9Gdua1yYCO8yJ+kr1rffvG/SafCBsnkvoyM+2CAgSwnBWDkWUm7MljyyyNMswcj3WIIrikdJVAKzanzSONlCeioF+zZM1ODZe1N4GVA3A9JlbDuAFVJkzlpqPkLYLr6iAPYyLjHpbPfOhnyDcTJDoDmH8kUWGXPt2W2J7OIIRtrYmUpevG0AS5X6+D37dxmi3qtxeZPnskUiSZ6kbdHLhdAQnte8XkfRUYZ+LtU/YBzjbC5QiKj/9RE/2Rp7NkcdJk/MreolKhQqbVYFNzKYeJamJaNj63fSGKL3X83NYY62w0tS89qRv1AklbLU84Ilutw3YaBTmdlyVSvzYSmfqMie7w3brwQAVRGysyvdMh3K9gMoGZuXpDXE08PQwWtY1h9Q1MmSx8bKWg60VEyLhS3SK5/PjvuS3/6YGgQa1Wxy6lIqSY1wKRg6WlyU+RM8S9Dl5Gtlr6jYAJvkFKgEy1It7UdR5vhPw+DQfb9LIzJnON644qteOhCKJQIEH/JGGH820V3Gq+20jPXjYb7oQoqimnB52yJI53FY/jdX3OsCpE7fojqpBWeLLZ2KKBcSsqwBO2hpNojnuOtCJZyw23BF4="
+url = "https://archive.archlinux.org/packages/c/cargo-auditable/cargo-auditable-0.6.4-1-x86_64.pkg.tar.zst"
+sha256 = "1ff68cfb8017bf69f3f8e343e5bc2002ed23a54411bba9de3da519fbc2c7126b"
+signature = "iQIzBAABCAAdFiEEFl4P98SMIm4ew2On+DQkgks+S5AFAmY8gRUACgkQ+DQkgks+S5CZ9g/+JHMQw7uO9yWQ2gcmJreqFw7WUZurgIWVDnjGJj98Oq/sbmNe+hoC15NOaOf24rsR09yx+diFk0+utEK6iz5BGnEnX2Z1MQnKMZHB2O6X+f9biA/xmZw6lgk3AmkSzeFwxPwyXX8/DoPTjqd4UrY/2gfYOoH33iGP4qC6JC2rZjX9M8vtnS/nh6zZdLQls4V6DIBIrvZJDzO4NM2fItsuyCoq6zUxOWYJbrP2vv3XFvGNzaWtSzosspFqK5VR6E+0l0cexlXXHXcHeADp6nk0zDedzOzHMRtxv2MOEMBtoDDIx4R1x5pKXwpTtlZrCvpa0lDemEt0h9VMiTPWm/ygE2vn3RFl4+Ho2mXlxYSUksG3JZCd0iVLPM+OC7N6wMq5z08ObG+D5qTAF/YWn1t0v4pBBIl/6ADW7+jtGk7eeatSvj77Sao0PlqNy7w7icceuF09qsMduxhN66N81hLBTX2rhT77pQ10qRDb9fx7vXAvAdXU0gp+ZF6f64czyP0yqETiTHcaLd0oCNU1ISgjh77E2vf6VQpaTDzx4PjwGkeboa1AjpbMGbGFfAH9jO9l+9hxVt/h0TIMAsZ7QFh02yS3m0gJGUusrisVpkTBmzqPkEMgJecGb/nv7TZyGsMvtQmzq2QCZmgoDDH2yYrvgQ107jgfmZwAL8Fffsg0sQA="
+
+[[package]]
+name = "cargo-deb"
+version = "2.4.0-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/c/cargo-deb/cargo-deb-2.4.0-1-x86_64.pkg.tar.zst"
+sha256 = "6b0a76d71961c376129b79d81d318ce9cb401dd21796bf642b8950092cc559c7"
+signature = "iQIzBAABCAAdFiEEM+u4qOHFZTZFsSMqRaZQ4mOMU20FAmaLye4ACgkQRaZQ4mOMU21+Sg//SneMbZek0hl1LONnsp1BkJ4OAxHD8KZ7ZUVgNqoKxFo7Y/vyEnY1QKo6BLTikH6MheSvXhWpdLpNnqXEJj8QA46HNCjaU8rugq0EPJ3meB8I+7qnlelCTwNWIB12UVvOjCm1mR5ux96W/BZjN3Ur7jfQlEHjYsM6ToL+tq2HitkNdQvKO0L6dyQC3FbfqZsi37nBdv7gQKh5IjV0beZ6RReEyEuzBC1Uio3HN3IuStZMSmxiXgpITjwLkHHztNFub0hhQO69065l4CFueqci0aNtkp5xoXF8Qflwui9f0MdxUc8m/5sdf95NTDFWnyh8MnUs3/qqPY6FyQ1uaaf8TxGspO0AQYzkLthe50wEd9aChCinU3x8/17p909u70fGVU6eBqMPugXwzrrHGOJ8JLviUQuGC8kOWvtuEt9oRHnwetWCMVWNcUVHCIl4GG5DBzHPeNP9li8TSoHW8RV7EbxVEtzSnfXxWh3tBRfau0ugxgVlmC7Dn+/wt5PxAXIGZP7MqmRyzBJYVG7vWBHdPFzUEJD0n0dL8IwOWOvbhG4cZ6yfiGHt3yzgbrIMUsDsqdeS8B7EteyAWmNaAkTiuiV58qsy6IfE86b//hfq/NlpKRzuDx+vVlJAYoEfZBblw6k3txlDb1YHc6NQ4PeVFTnQKNDb+WFMSoai4OPxEjg="
 
 [[package]]
 name = "coreutils"
@@ -370,6 +378,14 @@ sha256 = "a67ab57d4a9b4caa2e718652c392345cdd9c2496d835ab1d0ff1e78ae4429fde"
 signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZjJful8UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaCpfCAP4sFnTjSEIn5wDbLWGZOivsWT2SWPG6AgofrnUjaK/UMAD9E2u6D7WJbVTYrvDhVUz3WN6k8bVB8ZODyoIF66GWEw0="
 
 [[package]]
+name = "json-c"
+version = "0.17-2"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/j/json-c/json-c-0.17-2-x86_64.pkg.tar.zst"
+sha256 = "0ee6f3e674fa37284edb7bc5be69aade405324e661edeeb101c6be635d029eab"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZoXErQAKCRC4rAhgDxCM34XoAPwMKnwAuDrtCO9vaS+0HJOosrxMtGWqC2xPrmNtS5juWgD+PUCrtolVhKWx+DJWo+7+3Jl902VOZozp21TMjUcUUQg="
+
+[[package]]
 name = "kmod"
 version = "32-1"
 system = "archlinux"
@@ -538,6 +554,14 @@ sha256 = "2d9c86e58b6b59e0e3b7dc284d3dc8af6a671f81d13babf076dce6d43de02c52"
 signature = "iHUEABYKAB0WIQRizHP4hOUpV7L92IObeih9mi7GCAUCZSl8fAAKCRCbeih9mi7GCFsgAQCxeFyBcxhdhaDknYrn42Nnkm2P6CPMwqE7VGIbDQ1p2QD9EJK2Tyxncxt9jC+dNMC71fKzYavZvV3SVcp3M8J2VA0="
 
 [[package]]
+name = "libp11-kit"
+version = "0.25.5-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/l/libp11-kit/libp11-kit-0.25.5-1-x86_64.pkg.tar.zst"
+sha256 = "e3e16d93bda4890e19bf480d84f3b3c65c924b78287a3cc3da879721afc3c7a4"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZob0iAAKCRC4rAhgDxCM34fNAQD99QMcqk78I4YJoOMvUYSWP5bp0NsB+zKALcHUAEjpMgEA4RSevlMjgPl0TEoMs/Pej3B8BkEfkxiDc3VMQ/7fxQY="
+
+[[package]]
 name = "libpsl"
 version = "0.21.5-2"
 system = "archlinux"
@@ -603,11 +627,11 @@ signature = "iQEzBAABCgAdFiEErcih/MFeAdRTEEGelGV6sg8qCSsFAmX2sjsACgkQlGV6sg8qCSv
 
 [[package]]
 name = "libxml2"
-version = "2.13.1-1"
+version = "2.13.2-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.1-1-x86_64.pkg.tar.zst"
-sha256 = "3180fea4f0f9812f5da7408b06dff9ecaa7b53ee158e41d50323a24dab1d6279"
-signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZnLNaQAKCRC4rAhgDxCM31TIAP40xOqm5WBfm7ZV4io0bxTAAINGl8Pl5hZA9E0D+zY0+QD/eUWjNIusw7Ol9slq2KCduSOPJ22AJnZwNvhG4XJdXwA="
+url = "https://archive.archlinux.org/packages/l/libxml2/libxml2-2.13.2-1-x86_64.pkg.tar.zst"
+sha256 = "55d1e6e1b5241b83702a1e6252929c96782031cf2c4573ff2501aa4e51038394"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZob0bAAKCRC4rAhgDxCM35taAQDEeCMlCAFLdli7Q2mqUXQBuhL9+fPlYZcGVwaP2kliEAD/X8ZpwxfcGzZdMhgsEUDK75GIzGdWu+deoJKqe7BvRQU="
 
 [[package]]
 name = "licenses"
@@ -688,6 +712,14 @@ system = "archlinux"
 url = "https://archive.archlinux.org/packages/o/openssl/openssl-3.3.1-1-x86_64.pkg.tar.zst"
 sha256 = "3d0540fb0d4196c9d8bc369c7d2faa8800a37d4f57e4b3cb418dd438fd3c59dc"
 signature = "iHUEABYKAB0WIQQ+gMoai4n2nLpX2Yp2pe+QVESaXAUCZl9thAAKCRB2pe+QVESaXPZ8AQDIUORLQtyVcPznVihzQAv8blUov4Hed21VTKr3xyrI2AD/Vsb6QEV/ITwbEk9hKgi4rjruYyMaDUSliBd9XQL7PgA="
+
+[[package]]
+name = "p11-kit"
+version = "0.25.5-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/p/p11-kit/p11-kit-0.25.5-1-x86_64.pkg.tar.zst"
+sha256 = "fddfcb0eede8619d1185f9834426c27db68407fa5fb2eabd4cba360116fa536b"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZob0hwAKCRC4rAhgDxCM3/AIAQDWuPLCUdBREcAK7E0Yjz7ZhXdoF1yd4u4PcMuswFhNYQD9GmxAlIR6t0FGFkqGzr3nzImV0pb0v5t8Sb0OPLrBsQc="
 
 [[package]]
 name = "pacman"
