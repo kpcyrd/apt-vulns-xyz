@@ -8,11 +8,11 @@ patches = [
 
 [[checksums]]
 path = "target/x86_64-unknown-linux-musl/debian/authoscope_0.8.1~kpcyrd1_amd64.deb"
-checksum = "sha256:1b172f82a2badf74dfec06d2d33541cc46a9b76e8accf136b9af31f5acd64c7c"
+checksum = "sha256:e420a3b130eb39f84d87be03e7ffc02f70e507f04bde7b8930042fda5e350b79"
 
 [[checksums]]
 path = "target/aarch64-unknown-linux-musl/debian/authoscope_0.8.1~kpcyrd1_arm64.deb"
-checksum = "sha256:3d87a8b8ee038462ce421e6b2afcb0ab2b5c2ce1ab3d11743cee7a90f697f4c1"
+checksum = "sha256:e0010a65acff97e529eb179b8b76c4e6b6c84260eef4758a309e5f09aea2ca9d"
 
 [build]
 cmd = """
@@ -25,6 +25,7 @@ wget https://www.musl-libc.org/releases/musl-1.2.5.tar.gz
 echo 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4  musl-1.2.5.tar.gz' | sha256sum -c -
 tar xf musl-1.2.5.tar.gz
 
+# Arch Linux currently doesn't have cross-compiled musl libc, so we build our own
 pushd musl-1.2.5/
 CROSS_COMPILE="aarch64-linux-gnu-" \
 ./configure --prefix=/usr/aarch64-linux-musl/lib/musl \
@@ -37,12 +38,18 @@ make DESTDIR="/" install
 mv -v /lib/ld-musl-aarch64.so* /usr/aarch64-linux-musl/lib/
 popd
 
+# configure the right linker for cross compile
 mkdir -vp ~/.cargo
 printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
 
+# select a specific Rust release so it's documented which one has been used
 rustup default 1.79.0
 rustup target add aarch64-unknown-linux-musl
 rustup target add x86_64-unknown-linux-musl
-cargo deb --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
-cargo deb --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+
+cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
+cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+
+cargo auditable build --verbose --release --locked --target x86_64-unknown-linux-musl
+cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """

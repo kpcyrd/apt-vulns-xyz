@@ -1,16 +1,16 @@
 [meta]
 repo = "https://github.com/spytrap-org/spytrap-adb"
 version = "0.3.1"
-checkout = "origin/main"
+checkout = "7c13f5240da48bbdc43d0c83da5e87454b388f97"
 suffix = "~kpcyrd0"
 
 [[checksums]]
 path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.1~kpcyrd0_amd64.deb"
-checksum = "sha256:59cb9c302356226cca63af24218c98d34357c399c2c7dd96f7bdac5097a5b1d4"
+checksum = "sha256:35696e1f89d569d8a02fc5cc7aaf41abb20f0bb4d737d4c7396d02187a141394"
 
 [[checksums]]
 path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.1~kpcyrd0_arm64.deb"
-checksum = "sha256:08330cf2399691d3f2ba518c795a417b5dee07f6db616ad356689172216c24bb"
+checksum = "sha256:e2b8a2909e9516ab66fb1e24970b74cc88678508ea3df55051c55557da43a1f4"
 
 [build]
 cmd = """
@@ -23,6 +23,7 @@ wget https://www.musl-libc.org/releases/musl-1.2.5.tar.gz
 echo 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4  musl-1.2.5.tar.gz' | sha256sum -c -
 tar xf musl-1.2.5.tar.gz
 
+# Arch Linux currently doesn't have cross-compiled musl libc, so we build our own
 pushd musl-1.2.5/
 CROSS_COMPILE="aarch64-linux-gnu-" \
 ./configure --prefix=/usr/aarch64-linux-musl/lib/musl \
@@ -35,12 +36,18 @@ make DESTDIR="/" install
 mv -v /lib/ld-musl-aarch64.so* /usr/aarch64-linux-musl/lib/
 popd
 
+# configure the right linker for cross compile
 mkdir -vp ~/.cargo
 printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
 
+# select a specific Rust release so it's documented which one has been used
 rustup default 1.79.0
 rustup target add aarch64-unknown-linux-musl
 rustup target add x86_64-unknown-linux-musl
-cargo deb --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
-cargo deb --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+
+cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
+cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+
+cargo auditable build --verbose --release --locked --target x86_64-unknown-linux-musl
+cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """
