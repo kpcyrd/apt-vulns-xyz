@@ -3461,10 +3461,21 @@ index 77b1e49..567b1b5 100644
 + "pkg-config",
 +]
 diff --git a/Cargo.toml b/Cargo.toml
-index e21bbd5..65c2591 100644
+index e21bbd5..fbc5b95 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -43,12 +43,14 @@ base64 = "0.13"
+@@ -10,6 +10,10 @@ default-run = "authoscope"
+ readme = "README.md"
+ edition = "2018"
+ 
++[package.metadata.deb]
++section = "utils"
++priority = "optional"
++
+ [dependencies]
+ #hlua = "0.4"
+ #hlua-badtouch = { path="../hlua/hlua" }
+@@ -43,12 +47,14 @@ base64 = "0.13"
  bcrypt = "0.9"
  
  reqwest = { version="0.11", features=["blocking", "json"] }

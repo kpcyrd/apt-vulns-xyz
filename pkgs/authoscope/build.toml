@@ -8,11 +8,11 @@ patches = [
 
 [[checksums]]
 path = "target/x86_64-unknown-linux-musl/debian/authoscope_0.8.1~kpcyrd1_amd64.deb"
-checksum = "sha256:e420a3b130eb39f84d87be03e7ffc02f70e507f04bde7b8930042fda5e350b79"
+checksum = "sha256:e2e137346005bbea15e62d6717d95e810139f9b948edcf76801b475f888dd46d"
 
 [[checksums]]
 path = "target/aarch64-unknown-linux-musl/debian/authoscope_0.8.1~kpcyrd1_arm64.deb"
-checksum = "sha256:e0010a65acff97e529eb179b8b76c4e6b6c84260eef4758a309e5f09aea2ca9d"
+checksum = "sha256:1c49a352048decdd7412309f6928a6b00b9df7b65e43ea57b4a5478b656fd728"
 
 [build]
 cmd = """
