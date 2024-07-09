@@ -29,8 +29,9 @@ Built artifacts are available at:
 There's a reprepro configuration already setup in `conf/options`. After the `.deb` file is built you can add it to the package index with:
 
 ```
-reprepro includedeb stable ./build/<package>/target/aarch64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_arm64.deb
-reprepro includedeb stable ./build/<package>/target/x86_64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_amd64.deb
+# This runs `reprepro includedeb stable ./build/.../<package>_0.3.1~kpcyrd0_arm64.deb` for all configured artifacts
+# This can be dry-run with `-n`
+cargo run -- include <package>
 ```
 
 This needs access to a release signing key, if you are following along at home you need to edit `conf/options` to point to your own key.

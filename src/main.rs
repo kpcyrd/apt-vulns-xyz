@@ -41,6 +41,16 @@ pub enum Subcommand {
     },
     /// List all configured packages
     List,
+    /// Add all files of a package with reprepro
+    Include {
+        /// The code name of the distribution to add it to (e.g. `stable`)
+        distribution: String,
+        /// The name of the package which files should be added
+        name: String,
+        /// Do not actually run reprepro
+        #[arg(short = 'n', long)]
+        dry_run: bool,
+    },
     /// Publish the reprepro repository
     Publish {
         /// Do not actually upload, instead do a dry-run
@@ -58,6 +68,30 @@ pub struct Config {
     #[serde(default)]
     checksums: Vec<Checksum>,
     build: Build,
+}
+
+impl Config {
+    pub fn load_from<P: AsRef<Path>>(path: P) -> Result<Self> {
+        let buf = fs::read_to_string(&path)?;
+        let config = toml::from_str(&buf)?;
+        Ok(config)
+    }
+
+    pub fn build_status(&self, build_path: &str) -> Result<Option<bool>> {
+        let mut built = None;
+        for rule in &self.checksums {
+            if built == Some(false) {
+                continue;
+            };
+
+            built = match rule.verify(build_path)? {
+                Some(Some(_calculated)) => Some(false),
+                Some(None) => Some(true),
+                None => Some(false),
+            };
+        }
+        Ok(built)
+    }
 }
 
 #[derive(Debug, serde::Deserialize)]
@@ -102,21 +136,38 @@ pub struct Build {
     cmd: String,
 }
 
+fn status_to_err(label: &str, status: process::ExitStatus) -> Result<()> {
+    if status.success() {
+        Ok(())
+    } else {
+        bail!("Command ({label}) did not complete successfully");
+    }
+}
+
 fn prepare_source(name: &str, config: &Config) -> Result<()> {
     let path = format!("sources/{name}");
     if fs::metadata(&path).is_err() {
-        process::Command::new("git")
-            .args(["init", "--bare", "-qb", "main", &path])
-            .status()?;
+        status_to_err(
+            "git",
+            process::Command::new("git")
+                .args(["init", "--bare", "-qb", "main", &path])
+                .status()?,
+        )?;
 
-        process::Command::new("git")
-            .args(["-C", &path, "remote", "add", "origin", &config.meta.repo])
-            .status()?;
+        status_to_err(
+            "git",
+            process::Command::new("git")
+                .args(["-C", &path, "remote", "add", "origin", &config.meta.repo])
+                .status()?,
+        )?;
     }
 
-    process::Command::new("git")
-        .args(["-C", &path, "fetch", "origin"])
-        .status()?;
+    status_to_err(
+        "git",
+        process::Command::new("git")
+            .args(["-C", &path, "fetch", "origin"])
+            .status()?,
+    )?;
 
     Ok(())
 }
@@ -148,6 +199,8 @@ fn extract_source(name: &str, config: &mut Config) -> Result<()> {
     let stdout = child.stdout.take().unwrap();
     let mut archive = tar::Archive::new(stdout);
     archive.unpack(&build_path)?;
+
+    status_to_err("git-archive", child.wait()?)?;
 
     Ok(())
 }
@@ -257,25 +310,8 @@ fn main() -> Result<()> {
                 };
                 let Some(name) = name.to_str() else { continue };
 
-                let path = path.join("build.toml");
-                let buf = fs::read_to_string(&path)?;
-                let config = toml::from_str::<Config>(&buf)?;
-
-                let build_path = format!("build/{name}");
-
-                let mut built = None;
-                for rule in config.checksums {
-                    if built == Some(false) {
-                        continue;
-                    };
-
-                    built = match rule.verify(&build_path)? {
-                        Some(Some(_calculated)) => Some(false),
-                        Some(None) => Some(true),
-                        None => Some(false),
-                    };
-                }
-
+                let config = Config::load_from(path.join("build.toml"))?;
+                let built = config.build_status(&format!("build/{name}"))?;
                 println!(
                     "{GREEN}{:>7}{GREEN:#} {BOLD}{:>18}{BOLD:#} {CYAN}{:>8}{}{CYAN:#}: {}",
                     if built == Some(true) { "[built]" } else { "" },
@@ -284,6 +320,33 @@ fn main() -> Result<()> {
                     config.meta.suffix,
                     config.meta.repo
                 );
+            }
+        }
+        Subcommand::Include {
+            distribution,
+            name,
+            dry_run,
+        } => {
+            let config = Config::load_from(format!("pkgs/{name}/build.toml"))?;
+
+            if config.build_status(&format!("build/{name}"))? != Some(true) {
+                bail!("Package needs to be built first, missing files or mismatched checksum")
+            }
+
+            info!("Dry run mode is enabled");
+            for rule in config.checksums {
+                let path = format!("build/{name}/{}", rule.path);
+
+                let args = ["includedeb", &distribution, &path];
+                info!("Running {args:?}...");
+                if dry_run {
+                    continue;
+                }
+
+                status_to_err(
+                    "reprepro",
+                    process::Command::new("reprepro").args(args).status()?,
+                )?;
             }
         }
         Subcommand::Publish { dry_run, target } => {
@@ -312,11 +375,7 @@ fn main() -> Result<()> {
                 cmd.arg("--");
                 cmd.arg(src);
                 cmd.arg(format!("{target}/{dst}"));
-                let status = cmd.status()?;
-
-                if !status.success() {
-                    bail!("Command (rsync) did not complete successfully");
-                }
+                status_to_err("rsync", cmd.status()?)?;
             }
         }
     }
