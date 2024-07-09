@@ -1,0 +1,7 @@
+Origin: apt.vulns.xyz
+Label: apt.vulns.xyz
+Codename: stable
+Architectures: arm64 amd64
+Components: main
+Description: Apt repository for apt.vulns.xyz
+SignWith: 64B13F7117D6E07D661BBCE0FE763A64F5E54FD6

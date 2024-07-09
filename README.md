@@ -10,11 +10,12 @@ The source code for a reproducible apt repository.
 - Rust (unless you're using a pre-compiled binary)
 - [repro-env](https://github.com/kpcyrd/repro-env) (depends on podman)
 - git
+- rsync
 
 ## Build a package
 
 ```
-cargo run -- <package>
+cargo run -- build <package>
 ```
 
 A list of valid packages can be found in the `pkgs/` directory.
@@ -25,6 +26,19 @@ Built artifacts are available at:
 ./build/<package>/target/aarch64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_arm64.deb
 ./build/<package>/target/x86_64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_amd64.deb
 ```
+
+## Adding .deb files to a reprepro repository
+
+There's a reprepro configuration already setup in `conf/options`. After the `.deb` file is built you can add it to the package index with:
+
+```
+reprepro includedeb stable ./build/<package>/target/aarch64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_arm64.deb
+reprepro includedeb stable ./build/<package>/target/x86_64-unknown-linux-musl/debian/<package>_0.3.1~kpcyrd0_amd64.deb
+```
+
+This needs access to a release signing key, if you are following along at home you need to edit `conf/options` to point to your own key.
+
+To host your repository publicly, you need to upload `dists/` and `pool/` to a webserver.
 
 ## Reproducible Builds
 
