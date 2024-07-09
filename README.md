@@ -2,9 +2,6 @@
 
 The source code for a reproducible apt repository.
 
-> [!NOTE]
-> Versions from this repository haven't been deployed yet
-
 ## Dependencies for operating this repository
 
 - Rust (unless you're using a pre-compiled binary)
