@@ -41,7 +41,7 @@ jobs:
         restore-keys: ${{ runner.os }}-pkg-${{ matrix.pkg }}-
 
     - name: Build
-      run: cargo run -- ${{ matrix.pkg }}
+      run: cargo run -- build ${{ matrix.pkg }}
 
   unit-test:
     runs-on: ubuntu-24.04

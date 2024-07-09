@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>apt.vulns.xyz</title>
+        <style>
+            body { font-family: sans-serif; }
+            pre { background-color: lightgrey; padding: 10px; }
+        </style>
+    </head>
+    <body>
+<h2># Debian >= bookworm, Ubuntu >= 20.04</h2>
+<pre>
+sudo apt install ca-certificates curl gnupg
+curl -sSf https://apt.vulns.xyz/kpcyrd.pgp | gpg --dearmor |  sudo tee /etc/apt/trusted.gpg.d/apt-vulns-xyz.gpg &gt; /dev/null
+echo deb https://apt.vulns.xyz stable main | sudo tee /etc/apt/sources.list.d/apt-vulns-xyz.list
+apt update
+</pre>
+
+[<a href="kpcyrd.pgp">kpcyrd.pgp</a>]
+    </body>
+</html>
