@@ -8,8 +8,7 @@ dependencies = [
     "cargo-auditable",
     "cargo-deb",
     "gcc",
-    "make",
     "musl",
+    "musl-aarch64",
     "rustup",
-    "wget",
 ]

@@ -19,23 +19,6 @@ set -e
 # 2024-01-01
 export SOURCE_DATE_EPOCH=1704067200
 
-wget https://www.musl-libc.org/releases/musl-1.2.5.tar.gz
-echo 'a9a118bbe84d8764da0ea0d28b3ab3fae8477fc7e4085d90102b8596fc7c75e4  musl-1.2.5.tar.gz' | sha256sum -c -
-tar xf musl-1.2.5.tar.gz
-
-# Arch Linux currently doesn't have cross-compiled musl libc, so we build our own
-pushd musl-1.2.5/
-CROSS_COMPILE="aarch64-linux-gnu-" \
-./configure --prefix=/usr/aarch64-linux-musl/lib/musl \
-  --exec-prefix=/usr/aarch64-linux-musl \
-  --enable-wrapper=all \
-  --target="aarch64-linux-musl" \
-  CFLAGS="-ffat-lto-objects"
-make
-make DESTDIR="/" install
-mv -v /lib/ld-musl-aarch64.so* /usr/aarch64-linux-musl/lib/
-popd
-
 # configure the right linker for cross compile
 mkdir -vp ~/.cargo
 printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
