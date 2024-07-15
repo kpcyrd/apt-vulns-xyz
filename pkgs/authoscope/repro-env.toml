@@ -10,7 +10,7 @@ dependencies = [
     "gcc",
     "make",
     "musl",
+    "musl-aarch64",
     "perl",
     "rustup",
-    "wget",
 ]

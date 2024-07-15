@@ -7,9 +7,8 @@ dependencies = [
     "aarch64-linux-gnu-gcc",
     "cargo-deb",
     "gcc",
-    "make",
     "musl",
+    "musl-aarch64",
     "perl",
     "rustup",
-    "wget",
 ]
