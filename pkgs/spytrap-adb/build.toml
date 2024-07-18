@@ -1,16 +1,15 @@
 [meta]
 repo = "https://github.com/spytrap-org/spytrap-adb"
-version = "0.3.1"
-checkout = "7c13f5240da48bbdc43d0c83da5e87454b388f97"
+version = "0.3.2"
 suffix = "~kpcyrd0"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.1~kpcyrd0_amd64.deb"
-checksum = "sha256:35696e1f89d569d8a02fc5cc7aaf41abb20f0bb4d737d4c7396d02187a141394"
+path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.2~kpcyrd0_amd64.deb"
+checksum = "sha256:f2a3f62cdbc4dcbdc94eda5074e71f533dad1cd4ff494dfb606c77ad013f4d9d"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.1~kpcyrd0_arm64.deb"
-checksum = "sha256:e2b8a2909e9516ab66fb1e24970b74cc88678508ea3df55051c55557da43a1f4"
+path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.2~kpcyrd0_arm64.deb"
+checksum = "sha256:56e14bfaf7f65fd55c90da24682a25ec360a4fb840edb6f9f9448bb3bee4ba55"
 
 [build]
 cmd = """
