@@ -99,15 +99,12 @@ mkdir -vp ~/.cargo
 printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
 
 # select a specific Rust release so it's documented which one has been used
-rustup default 1.79.0
+rustup default 1.80.1
 rustup target add aarch64-unknown-linux-musl
 rustup target add x86_64-unknown-linux-musl
 
-cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
-
-cargo auditable build --verbose --release --locked --target x86_64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """
 ```
 
