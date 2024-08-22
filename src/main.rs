@@ -39,8 +39,11 @@ pub enum Subcommand {
         #[arg(long)]
         skip_build: bool,
     },
-    /// List all configured packages
-    List,
+    /// List configured packages
+    List {
+        /// Only show the status of a specific package
+        filter: Option<String>,
+    },
     /// Add all files of a package with reprepro
     Include {
         /// The code name of the distribution to add it to (e.g. `stable`)
@@ -85,7 +88,13 @@ impl Config {
             };
 
             built = match rule.verify(build_path)? {
-                Some(Some(_calculated)) => Some(false),
+                Some(Some(calculated)) => {
+                    debug!(
+                        "Artifact {:?} does not match expected checksum: {calculated}",
+                        rule.path
+                    );
+                    Some(false)
+                }
                 Some(None) => Some(true),
                 None => Some(false),
             };
@@ -297,7 +306,7 @@ fn main() -> Result<()> {
                 bail!("Some artifact checksums mismatched");
             }
         }
-        Subcommand::List => {
+        Subcommand::List { filter } => {
             let mut entries = fs::read_dir("pkgs")?
                 .map(|x| x.map_err(anyhow::Error::from))
                 .collect::<Result<Vec<_>, _>>()?;
@@ -309,6 +318,10 @@ fn main() -> Result<()> {
                     continue;
                 };
                 let Some(name) = name.to_str() else { continue };
+
+                if filter.is_some() && Some(name) != filter.as_deref() {
+                    continue;
+                }
 
                 let config = Config::load_from(path.join("build.toml"))?;
                 let built = config.build_status(&format!("build/{name}"))?;
