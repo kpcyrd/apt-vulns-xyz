@@ -1,18 +1,15 @@
 [meta]
 repo = "https://github.com/kpcyrd/acme-redirect"
-version = "0.6.2"
-suffix = "~kpcyrd1"
-patches = [
-    "vendored-openssl.patch",
-]
+version = "0.7.0"
+suffix = "~kpcyrd0"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.6.2~kpcyrd1_amd64.deb"
-checksum = "sha256:f59fad9f3f84f851ae0ff69f74e4c87c0a958ea32a4db49a3d984f3e93226dc7"
+path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd0_amd64.deb"
+checksum = "sha256:02a9c6ac4ee9e3403233932658ab763805f4f97c0204a4a9667fd4820089388e"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.6.2~kpcyrd1_arm64.deb"
-checksum = "sha256:5d023b66dfeb44a80da9d3b2e61848bd339b8b90e64a4d29d3abd7d29c7cf7d5"
+path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd0_arm64.deb"
+checksum = "sha256:7925660904e69d6a2ff1720d5d4d508cf711e8a0fcb320ebc78047fb4c1dbaf3"
 
 [build]
 cmd = """
@@ -26,13 +23,10 @@ mkdir -vp ~/.cargo
 printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
 
 # select a specific Rust release so it's documented which one has been used
-rustup default 1.79.0
+rustup default 1.81.0
 rustup target add aarch64-unknown-linux-musl
 rustup target add x86_64-unknown-linux-musl
 
-cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
-
-cargo auditable build --verbose --release --locked --target x86_64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl -- --features vendored
+cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl -- --features vendored
 """
