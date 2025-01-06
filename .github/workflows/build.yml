@@ -19,6 +19,7 @@ jobs:
         pkg:
           - acme-redirect
           - authoscope
+          - sh4d0wup
           - spytrap-adb
     runs-on: ubuntu-24.04
     steps:
