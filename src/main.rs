@@ -1,18 +1,29 @@
 use anstyle::{AnsiColor, Color, Style};
-use anyhow::{bail, Result};
+use anyhow::{anyhow, bail, Context as _, Result};
 use clap::{ArgAction, Parser};
 use env_logger::Env;
 use fd_lock::RwLock;
 use log::{debug, error, info};
+use peekread::{BufPeekReader, PeekRead};
 use sha2::{Digest, Sha256};
+use std::collections::BTreeMap;
 use std::fs;
 use std::io;
-use std::path::Path;
+use std::io::Read;
+use std::path::{Path, PathBuf};
 use std::process;
+use std::str;
+use xz2::read::XzDecoder;
 
 const BOLD: Style = Style::new().bold();
 const CYAN: Style = Style::new().fg_color(Some(Color::Ansi(AnsiColor::Cyan)));
 const GREEN: Style = Style::new().fg_color(Some(Color::Ansi(AnsiColor::Green)));
+const YELLOW: Style = Style::new().fg_color(Some(Color::Ansi(AnsiColor::Yellow)));
+const RED: Style = Style::new().fg_color(Some(Color::Ansi(AnsiColor::Red)));
+
+const ELF_MAGIC: &[u8] = &[
+    0x7f, 0x45, 0x4c, 0x46, 0x02, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+];
 
 #[derive(Debug, clap::Parser)]
 pub struct Args {
@@ -43,6 +54,9 @@ pub enum Subcommand {
     List {
         /// Only show the status of a specific package
         filter: Option<String>,
+        /// Audit the package for vulnerable binaries
+        #[arg(long)]
+        audit: bool,
     },
     /// Add all files of a package with reprepro
     Include {
@@ -214,6 +228,91 @@ fn extract_source(name: &str, config: &mut Config) -> Result<()> {
     Ok(())
 }
 
+#[derive(Debug, serde::Deserialize)]
+pub struct Audit {
+    vulnerabilities: AuditVulns,
+}
+
+#[derive(Debug, serde::Deserialize)]
+pub struct AuditVulns {
+    list: Vec<Vuln>,
+}
+
+#[derive(Debug, serde::Deserialize)]
+pub struct Vuln {
+    advisory: Advisory,
+}
+
+#[derive(Debug, serde::Deserialize)]
+pub struct Advisory {
+    id: String,
+    package: String,
+    title: String,
+}
+
+fn audit_bin<R: Read>(entry: &mut tar::Entry<R>) -> Result<Option<Audit>> {
+    let mut reader = BufPeekReader::new(entry);
+
+    {
+        let mut peek = reader.peek();
+        let mut magic = [0u8; ELF_MAGIC.len()];
+        peek.read_exact(&mut magic)?;
+        if magic != ELF_MAGIC {
+            return Ok(None);
+        }
+    }
+
+    let mut child = process::Command::new("cargo")
+        .args(["audit", "--json", "bin", "/dev/stdin"])
+        .stdin(process::Stdio::piped())
+        .stdout(process::Stdio::piped())
+        .spawn()?;
+
+    io::copy(&mut reader, &mut child.stdin.take().unwrap())?;
+
+    let output = child.wait_with_output()?;
+    if output.status.success() {
+        bail!("cargo audit bin has failed");
+    }
+
+    let audit = serde_json::from_slice::<Audit>(&output.stdout)?;
+    if !audit.vulnerabilities.list.is_empty() {
+        Ok(Some(audit))
+    } else {
+        Ok(None)
+    }
+}
+
+fn audit_deb(path: &str) -> Result<BTreeMap<PathBuf, Audit>> {
+    let mut ar = ar::Archive::new(fs::File::open(path)?);
+    let mut audits = BTreeMap::new();
+    while let Some(entry) = ar.next_entry() {
+        let entry = entry?;
+        match entry.header().identifier() {
+            b"debian-binary" => (),
+            b"control.tar.xz" => (),
+            b"data.tar.xz" => {
+                let xz = XzDecoder::new(entry);
+                let mut tar = tar::Archive::new(xz);
+
+                for entry in tar.entries()? {
+                    let mut entry = entry?;
+                    let header = entry.header();
+                    if header.entry_type() != tar::EntryType::Regular {
+                        continue;
+                    }
+                    let path = entry.path()?.into_owned();
+                    if let Some(audit) = audit_bin(&mut entry)? {
+                        audits.insert(path, audit);
+                    }
+                }
+            }
+            unknown => bail!("Found unknown .deb content: {:?}", str::from_utf8(unknown)),
+        }
+    }
+    Ok(audits)
+}
+
 fn main() -> Result<()> {
     let args = Args::parse();
     let log_level = match args.verbose {
@@ -306,7 +405,7 @@ fn main() -> Result<()> {
                 bail!("Some artifact checksums mismatched");
             }
         }
-        Subcommand::List { filter } => {
+        Subcommand::List { filter, audit } => {
             let mut entries = fs::read_dir("pkgs")?
                 .map(|x| x.map_err(anyhow::Error::from))
                 .collect::<Result<Vec<_>, _>>()?;
@@ -333,6 +432,35 @@ fn main() -> Result<()> {
                     config.meta.suffix,
                     config.meta.repo
                 );
+
+                if audit && built == Some(true) {
+                    for pkg in config.checksums {
+                        let path = format!("build/{name}/{}", &pkg.path);
+                        let audits = audit_deb(&path)?;
+
+                        if !audits.is_empty() {
+                            let deb = Path::new(&path)
+                                .file_name()
+                                .with_context(|| anyhow!("Failed to determine filename: {path:?}"))?
+                                .to_str()
+                                .with_context(|| anyhow!("Invalid filename: {path:?}"))?;
+
+                            println!("[{YELLOW}#{YELLOW:#}] {deb}");
+                            for (filename, audit) in audits {
+                                for vuln in audit.vulnerabilities.list {
+                                    let adv = vuln.advisory;
+                                    println!(
+                                        "[{RED}!{RED:#}] {}: {} {} {}",
+                                        filename.display(),
+                                        adv.id,
+                                        adv.package,
+                                        adv.title
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         Subcommand::Include {
