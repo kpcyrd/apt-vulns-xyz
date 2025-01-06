@@ -44,7 +44,7 @@ The following packages have been fully integrated into the latest tooling:
 
 - [x] acme-redirect
 - [x] authoscope
-- [ ] sh4d0wup - due to liblzma
+- [x] sh4d0wup
 - [ ] sn0int - due to ring 0.16.20 and libseccomp
 - [ ] sniffglue - due to libpcap and libseccomp
 - [x] spytrap-adb
@@ -94,14 +94,10 @@ set -e
 # 2024-01-01
 export SOURCE_DATE_EPOCH=1704067200
 
-# configure the right linker for cross compile
-mkdir -vp ~/.cargo
-printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
-
-# select a specific Rust release so it's documented which one has been used
-rustup default 1.80.1
-rustup target add aarch64-unknown-linux-musl
-rustup target add x86_64-unknown-linux-musl
+# https://gitlab.archlinux.org/archlinux/packaging/packages/musl/-/merge_requests/1
+ln -s ../aarch64-linux-musl/bin/musl-gcc /usr/bin/aarch64-linux-musl-gcc
+# https://github.com/kornelski/cargo-deb/issues/157
+mkdir -p .cargo && touch .cargo/config.toml
 
 cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
 cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
