@@ -1,15 +1,15 @@
 [meta]
 repo = "https://github.com/spytrap-org/spytrap-adb"
-version = "0.3.2"
+version = "0.3.3"
 suffix = "~kpcyrd0"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.2~kpcyrd0_amd64.deb"
-checksum = "sha256:f2a3f62cdbc4dcbdc94eda5074e71f533dad1cd4ff494dfb606c77ad013f4d9d"
+path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.3~kpcyrd0_amd64.deb"
+checksum = "sha256:50bb3badf52bf3a3bd3a51bf134d4f5735a3a9017ac7a859091925dba4afab7f"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.2~kpcyrd0_arm64.deb"
-checksum = "sha256:56e14bfaf7f65fd55c90da24682a25ec360a4fb840edb6f9f9448bb3bee4ba55"
+path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.3~kpcyrd0_arm64.deb"
+checksum = "sha256:d3d96731decf12489960b16b5d3c4f6cd393ad4ad5f3dfeefbc984ffabe61643"
 
 [build]
 cmd = """
@@ -18,14 +18,10 @@ set -e
 # 2024-01-01
 export SOURCE_DATE_EPOCH=1704067200
 
-# configure the right linker for cross compile
-mkdir -vp ~/.cargo
-printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
-
-# select a specific Rust release so it's documented which one has been used
-rustup default 1.79.0
-rustup target add aarch64-unknown-linux-musl
-rustup target add x86_64-unknown-linux-musl
+# https://gitlab.archlinux.org/archlinux/packaging/packages/musl/-/merge_requests/1
+ln -s ../aarch64-linux-musl/bin/musl-gcc /usr/bin/aarch64-linux-musl-gcc
+# https://github.com/kornelski/cargo-deb/issues/157
+mkdir -p .cargo && touch .cargo/config.toml
 
 cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
 cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
