@@ -1,15 +1,15 @@
 [meta]
 repo = "https://github.com/kpcyrd/sh4d0wup"
 version = "0.10.0"
-suffix = "~kpcyrd0"
+suffix = "~kpcyrd1"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/sh4d0wup_0.10.0~kpcyrd0_amd64.deb"
-checksum = "sha256:e97289e784db2325b22a5ff3d29e81aab867b96e87769d7d8b962f66b1c00f96"
+path = "target/x86_64-unknown-linux-musl/debian/sh4d0wup_0.10.0~kpcyrd1_amd64.deb"
+checksum = "sha256:057e5d5a7b17374eac45d65e7a55ae8e3bd50118f625b2772c1beecfebf88ba9"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/sh4d0wup_0.10.0~kpcyrd0_arm64.deb"
-checksum = "sha256:47cfb509b9db2894684c16cde9f383c7a99df7429a6a38ffe56a341efd8ac61a"
+path = "target/aarch64-unknown-linux-musl/debian/sh4d0wup_0.10.0~kpcyrd1_arm64.deb"
+checksum = "sha256:6ef3053f436c400fe8490609966bd5e9e2d6ce692d44adac5ba6d64113e5d02d"
 
 [build]
 cmd = """
@@ -20,12 +20,10 @@ export SOURCE_DATE_EPOCH=1704067200
 
 # https://gitlab.archlinux.org/archlinux/packaging/packages/musl/-/merge_requests/1
 ln -s ../aarch64-linux-musl/bin/musl-gcc /usr/bin/aarch64-linux-musl-gcc
-# https://github.com/kornelski/cargo-deb/issues/157
-mkdir -p .cargo && touch .cargo/config.toml
 
 cargo auditable build --verbose --release --locked --no-default-features -F vendored --target aarch64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --no-build --section utils --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
 
 cargo auditable build --verbose --release --locked --no-default-features -F vendored --target x86_64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+cargo deb --no-build --section utils --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """
