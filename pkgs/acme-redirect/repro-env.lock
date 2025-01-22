@@ -1,69 +1,69 @@
 [container]
-image = "docker.io/library/archlinux@sha256:a45700aba9079ee52d41d080d1aed39066e0867aa9beebcc695cd111c21964e1"
+image = "docker.io/library/archlinux@sha256:c2a6685fa6fe41de064ce806e155c3f367e42f8c02d15570f52d2b4ba5caa3a8"
 
 [[package]]
 name = "aarch64-linux-gnu-binutils"
-version = "2.42-1"
+version = "2.43-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-binutils/aarch64-linux-gnu-binutils-2.42-1-x86_64.pkg.tar.zst"
-sha256 = "953255868d706bbd3bf2252088829fae66b950ebd7238346957b04e2bcac4b53"
-signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmXeQEMACgkQsChU7XU+Dx9i/A//YZhG0jjDag31M8iZfYSCOR1sRnEd97Eq9wqrawp1XZ+1r4x6+VCPHcQT981RxHbYV06A7VMKYQVZ8cQakjlS1NfRFmXaWw22AsQ1rhCpj66FHD+R5CAQnafg//3g+G32xg90b8m1VqRxNsyZTZlLKkbtDINzwSW10/QySactsZwv6ySE7DYsJFluplZGsfhw49yS5TtmsgL5AorSBhKISm5nUGnEdJyFWKI6xKbY0AzTZ1lgK0ygauWNZ4/xl4YEneubWYAku2QmutY86sbHYyUyfMVFG2wfs+iuR0zCFehL02AIorjKfg37+LZPinKOv4jbCFVehBaLJQ9jtlulo2wfFUtU56P3aODZUjEWS6PBtKg4SotYfjDiDngHsaF5qKReD9OXjE/u0N/sVPKRrOLHIVZvZGlyJFzBiz7UuqbQiQtMTQt7fdSG4Fc6QFYo9hUvrgXPvXiDHqkghnnQYwuRuNq1sUMYkN25kd3v8UR2ZJReOzrFRrlT8S1OD35fvJLoKpTUibe33Sxnl/c1gB9S7f7nqlIWPiYeQU6//IhR7shHLdxdHtY/KkU1LBR5xBNitb/cIZlFNeVJtuakCE7dZYR3v+4lglp8eEQEYCm12+ddzI7Y4W2neNVecxH8P3GG22kpPrU4pjs/OkrR3lSdiSvCixkANrIdCgrHxL8="
+url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-binutils/aarch64-linux-gnu-binutils-2.43-1-x86_64.pkg.tar.zst"
+sha256 = "cd9065d56c56570322c9d0b63411d86ba95a1f23932100ca2107840363622f8a"
+signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmc5MB0ACgkQsChU7XU+Dx+VfBAAlw+yFzHoBqm6xIHwF1Q4iR6M2x1kgQstlfaHnP7nL6EwunhmHGQIDf/4Zc2tNqE5q5v8lmHv+YSBO8L4MybyxN/sFG2rv78fAlyJx/UFER92DbMJvHZtZoF2cvX+pvaczw6/rIX77x9PhnzKQASIKXWKsu4Uy9jbZuZLd/XCILFl9kPwFqzNDxNL7pRiakYUsSM8xcXZFUg8wOO5DogGhB0lo2v9mbDmNIkMWLuPB9RqxSk3MkXaU9aETx12bxCbrdmHQHlBlDvEpfDw7wKGUOQTmqXB2h0OUYbOQ7xieyJA1CJ8/K7UL8XEKcmjNa8jaLClPaaOOGju5btEB8VH/GQqsUJXI4rGyFDMJOlcX2+AdBJwSAVO2j2LWafg4Mu+tyfjYzOALvhhEHewyZmYZih2YpcSOdTfdXakeN/gMsg3zNyM/PJn0K1k6CP006ILSSVJHKDIi+CkI7eEv+tbgAj2h0RJxue+YoEqa5M64nJTbPyBV/F9X2L2E4sOLr36z8wGRh2tc2nxWsdntHu3+XE4Jks1imYq6GJUTDUpOgbwnDmUY0eiyQSd8CSvAWdRS32mPBgwOSYbmxCZBK8+MioXEvvg0PWH30o7B0x8MSlb4ZW9EkCvmxhUfWfOzsBW82lVKnwbfg1JBfeZpWBzetI7hqpmGippwPfwleqSet4="
 
 [[package]]
 name = "aarch64-linux-gnu-gcc"
-version = "14.1.0-1"
+version = "14.2.0-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-gcc/aarch64-linux-gnu-gcc-14.1.0-1-x86_64.pkg.tar.zst"
-sha256 = "fec0bb1ab703350c7247d2425e21d250b8ebad0a4d4f8f650d9f3e7f5cc43903"
-signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmY/5mwACgkQsChU7XU+Dx9Zdw/8CCAkvA0EcS7zxLJ4wCZa5PQpZfbYb3z5KYyNhmN4Nq0KgfScKh7Jv4c5Hxnd2eRpoJs7Dnk7KLXhjOnV4PhMoOWMnv95+uMNZ5A0i2Y+am29IR0BJawsaYxqFbmn0xQwXKhMAVxNI+QkzgXvh8GH13hMsxE05uk8M0NnZ4fONDRhjTqsPvmXW+0SLCA20lD63kK+5MPML85wi2l1YlnPwwpqbEGgbh5yRM+jl/K19Ewcs1e/Tj9jZ/TvRwwphdZiPLcL0uj6C5gLZec/egEnhSHPbs8JxpHGtoHdCswlOVf/5f0pPE2efI+f1EfNycV8uLYLZFq0AH9KzNJKpB9oddaYSD00mdug/ZA7bB9gS8D6SanUlukhr4VHLyX+dh3x2uVOrYDYI4UBZHQmLAM9a5jZdLuCtTFVrDGxkYOBIjmE9ErhIFeGzuazBr+yj0dn9/whNjqcX7WEuBq4PVd36NDwhWn2g7ZcCeCVMlOQMnlue2x+jgzLDgM4wTrkMTvA5X8xZQg7lsJwmz8DpMz0JGnDUbDfbzv9ksYcK6vGYlxI1jzD3FSs0UT9NTyzIHfv7b+zX+KrPnGPCxw7hPIQ8VIs+WDJpaOi9CEG2OXdBaTyx39F2uQm7+ABFBShnyAA4IGoKNMjtD7xXkfJUvKfIISWEl4QmxE/Er/5Q8Jpc9s="
+url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-gcc/aarch64-linux-gnu-gcc-14.2.0-1-x86_64.pkg.tar.zst"
+sha256 = "9f68a3a00ec1a4d78d416a0f20487de0bf3d57a35f3a537062b4a0d072c19c19"
+signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmc86w4ACgkQsChU7XU+Dx8uQA//cuxU1P/sWJyhMU+DdBvDJmbdcDWpdCeMce00XIHuQcJSQv5NP9u/rTj/VuVZfBlok8djbp6r1LM47UEYemVPo/0EIEjEV9mYBmywi23+toF++2Wos+qi6UstuDf4hBMSjnxPpcSWWf3SB/gjpMz/IbVwTfk4KeTYy8L/PlohlFlScd6uqADmdfZFKIA0qKOqHMMiKKP1PA+hIcsy3giV3axiK/TQnppRwogigrCHVk92zrGK2achxvWpVvD47ij4V8BrIdvClBfAmMRWDGVqXVhGKr5+EgnCZ/jWdOSQckryvTDe1rKvmiy+CQ/UonAKR/uvUsnZ2r5an1L+Xn7aNLBSPXHrv8qRpmmxSsWYaTiCR5VY7ckaAU8u78IpjNcxmnOcZVdhqnUDuxRWNVvsg6GWvMnowoa8/xlxotz+HxDFiS7mvnf9QITTygzXjXPsVM9ufkP181SSPUEwTrn/V6MCl7NAWuWkTWvZ/h+WdCvil0ymZgulDAU5oeXxYcg1UO2OF2bmEUoi5uOomv+7Rz523wgwOZ3XzQiJN/dEQ4q911vIcDWu9xtW1f5Lvy4lDp1kt37IJaFmXnCX8LLOod6VrGquP+nkMQTY4TA0YhUW/XfoWqWAQ215WUiwXkKbPo48gBFouaZrlgfqI6/kRY+a/uLMqUlWPb1iavgUO3o="
 
 [[package]]
 name = "aarch64-linux-gnu-glibc"
-version = "2.39-1"
+version = "2.40-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-glibc/aarch64-linux-gnu-glibc-2.39-1-any.pkg.tar.zst"
-sha256 = "413cd1760d30196e94b4b014904bc8e5c22d37adb4c27784f8a13e31329a027a"
-signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmXr3rgACgkQsChU7XU+Dx+F7g//ZxmOlEYlLqWmL4h8o8efVxiHh5k49cQlYO+xJXpDmlueYZxc0bIFx6CgKJ6BinU+7UkRC/bcuMfT5ztk4xJKD1ZvlgvSXJnlc/gQNSifR5IqEqzxML23SQU694cGZDSR9ctk97vKh85XYuQO3nuBGcCYl/RPPDRskBlEpjwuNutR0kAP/ZPUIRaSo4rxuOe24B5OBeAmGXZGfmvRcwMy03g9Sq84TmUqSG1sCX5Tj81piP41uKqV4G2xo6MBpc2WY1SQFiPoG2rpr42o0o/QXaIKrMRS5WkpQzHJRUZeLk4AKGEdzat8vZvGvZZEg7it7Q6Ho/QCdth3l1GIQv+SIw9XNG1fbQNY1EK4nFlGaXGRvaaLsXUca4Z1krSx3D4KEcV8uyV1Nm7WLJjQiOykMJZ3xKZreOLII90fSEkr34RKM2s71GwAB+HeOPUS93gKYOf436LOI2VAHNhs447/C53zcE9QQRKeyzh6Lpw6zOaDw+2xaBi37nJaIVBcOE+zeRGYU7DfhY2ecbeGPKvfxt3pUthOVLOjwVpc579UI8kyBcm9/SM0B+lxIJCWhNkq4qlNmuCLXE473iJ0Ads0vsKV+5tfvSU/Q9gMJmYNMOiI9JFRqt5kcKdopIVxIybNmmClCAfLo93+UGB6aZgr5TLnRgoHHpt2NADF9l8LdJQ="
+url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-glibc/aarch64-linux-gnu-glibc-2.40-1-any.pkg.tar.zst"
+sha256 = "0e410d29c37ed5af0a4ce0e90103cac5cd78c114d238d7770543b0b35e3c313a"
+signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmc9CIYACgkQsChU7XU+Dx9XYA/+NqMAx/f/orVvkyx2hG1H4Aygi2LVjIG3ca8hAirA3beppWTOGeMSbLRPiOvfH0wGWAbOipqng/312khj36N3EHI8X80IqwyOkxpO24aEuEOFQMH+FgVgSfSiCF5uF1hjspvm0WDc8/mSDsej1vryGacIqh6x0JqzdlXcp80D/jpKvewa3JGheHWei3CAgktKw6jONVBsGiLlkhTm3XrOiv+NNSh81bw3ofGme74j4uQEi2T0TJgw4+LyJ203v30/dxGYtT7A5hYd4+L5vxXtju4Hz7YH+xtQiiRMhR2pcfTS/gdk29c93Uetfb5PHJKhxleG+hOXqwrOfmWPCOZ55mgXDzLHgsI/ZL/gVtasyKorNnYNDZcuC3uIV56e+3GQpn0oeFI8wqT6gEgMi2wbFXsUQqeTlTCSx95CCkR8LFvoIDLQexP6Tu9iC+UYCetF59BVCZLUEVCUP0N6ZpMmk21hesCKAaPk7foNNuXdmOzduZZ2JPcsdNy76DJIR26nbk95jxgxEPEawDhum9nTE+1c/16trcFidNzTTMmwhWRa81qZPQYgZ97TeK8QJrjT+6vXu/+HNfjl5SQ2CFxHWoS/wTFmY3gWyerTM+C48l/4iNg7pHF1chNJXEvzPaDypLtFDt78ItN/5Q0g4usQIJnoNZqV0Sn3SmKNW2BeEvY="
 
 [[package]]
 name = "aarch64-linux-gnu-linux-api-headers"
-version = "6.7-1"
+version = "6.12-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-linux-api-headers/aarch64-linux-gnu-linux-api-headers-6.7-1-any.pkg.tar.zst"
-sha256 = "c627c8aadc83203beca40cdf2e20f27413ac92f7c8c8c3297354f76321e56460"
-signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmXr1EQACgkQsChU7XU+Dx+IZBAAk31eMM89svWsY2XWUlTIUvEwtJFq/IRwITjpUhEoy5ywQ7zR21D+cTV1+Preca50+04WyxnzU4fYVPJ7bqPSaUeH7jFxCLCDjSuXLCQfnfCzfRsSqEy0LTVAi5NVjWeYG8pB19fU/eVBZ/Vh0t3wUeJ3vfq8usrtUWV2N6bUoZmCcR0x4L7BVWUjtE9TVU1RvvRYOl/oIDX+hp3tZn8KE0+PVs9f3zB/s8oAloOq8r+DcsKqPFIwHg7czBCsg1BLGS3UKCn1rcsrIk42/htO89048V+j3TGavovlY3BFqA75aRpEWv47T+bYETvwkWsR4ETW6uRdhIWU/Si09aAtGaQ0SeOoLS6OiXaYcTbgQh0HFsUceMayXaKsnTbzYyTJYDW0DlvRRS8lVl00r3lDOnep7kUDVsRpeOoMI8IxQ9fOtFGEbliOhuwl8kIpKa/Qr6e4hJOPzOxn0LMdRkh9vX0GeUhh/NovDKia5ojttX/hphiNVylLXuRm674ep1vJYXNYAja6hzssWBhZEMK/2aA3fKIULJqEz+GQ5h0/t8zP2Bn8henzTpWGJaiFn4bil/vrwZPzoBFtUT40CRxCbp8HKzpQSeaerkARod2icX2dOKs6rWJ5JijijeT1BWDtjXufRKvJjJxrytd9qLVJuUKuFyP2NDyKkPoq3vXoYwA="
+url = "https://archive.archlinux.org/packages/a/aarch64-linux-gnu-linux-api-headers/aarch64-linux-gnu-linux-api-headers-6.12-1-any.pkg.tar.zst"
+sha256 = "500d6df001985aefeb2305d5061ebde6b5cc7f67d764827f99d2e9de19498450"
+signature = "iQIzBAABCAAdFiEEjhmSFnRl21+wRVV8sChU7XU+Dx8FAmc74MYACgkQsChU7XU+Dx8dPBAAimRTvl2Kgm+AV5rnmsb2rceOskQ9L4dfcB4iJA/dKGtHB4jnzlGfYez3v4T4JjlwVsbfWcFN47CdbYChHP5wPOgNYNo76B3Qy6eMjpzu7+I/wkI6f8G/oKqYfksaJWp94z1Br5K/Mf09HQCgkLNHtNFCUo/ZEePRKYw9Rcb3hOUZZ02pEcNMy1VtGP25+2beWTr+K9MYgW/rxCTjoRlEVgggAbYU7MECTBZlnauP1VsOqwuBl1EaPXzlcBJX+KODnM088TRMIuLIP4mOVDje2cxhtTyhkMirLn+YYhOhPtqm2r0VgEQgApDYsd3zOujN26lVvefn/Y1i1EUTaK1Ej//K1KGUYEUtouIgXInI0a2PfjSOXn+21c9vTydBZaP9A1qHaw8SA/P8lr+vTkxhW03KPzZ6yMHohzdTRL34lrVjAV/H+yYpDHcAFuLEnHAOs6rnpCwSEGd9yfbieO66lmxNMUdYw/RaLZNtkjIGd2DNOZ2qky5LyxuNx6ibu3MSx9kyFQJFQAqtTSgK2bttbbHVfangSEcV4WK4GHUZ/Ljjb+8qf/Sma2OSbpGBCZQ50Jh5W9ogQ7Rb0lsUhD3OU9NNxOjs2EM2NhXd+3o/7kYjoU2JUrpkDQzCkvgrpPzCg5EPa3shrVuM6zXKT7W8/ZLvONVvhi5ntPTHyMzfo4w="
 
 [[package]]
 name = "binutils"
-version = "2.43+r4+g7999dae6961-1"
+version = "2.43_1+r171+g01da089627be-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/b/binutils/binutils-2.43+r4+g7999dae6961-1-x86_64.pkg.tar.zst"
-sha256 = "6702f58e662908cbd5a86d554363348c2ab5c2e5e594f9d07d5627d16fda57b7"
-signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZrE/KV8UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaCmU9AQCXKD3fwCpsiulOCWkyRGtDfo6LP7RgB/qUuamWUSrZewD7Bb1wX8sFIlloYrBNBbKjfSyytH4gY7VuJ7fFFTodpwI="
-
-[[package]]
-name = "ca-certificates-mozilla"
-version = "3.105-1"
-system = "archlinux"
-url = "https://archive.archlinux.org/packages/c/ca-certificates-mozilla/ca-certificates-mozilla-3.105-1-x86_64.pkg.tar.zst"
-sha256 = "9a5c5302aed248a54e1a0db377b08dcc4927fd5e99df448e3c48d01937f72579"
-signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZvhEuQAKCRC4rAhgDxCM3+jQAP9ZorLfU75h4/SqpeB+w1QLt3sjqGlscLCdrRYnxHilYwEAyuizwsRsF/E5TXNcusgC0OGiHpwQOsrgMs5Ogn6DXQ4="
+url = "https://archive.archlinux.org/packages/b/binutils/binutils-2.43_1+r171+g01da089627be-1-x86_64.pkg.tar.zst"
+sha256 = "eec8c3d82fba485947902acafaa153333973855a59d743e4c2c3355407bdc1df"
+signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZ3uLL18UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaCq7pAPwOscxM05MOBYTV72nsOew3yniyWLkjfwTO6qLVahA6ZwEAnIrQEC/lFWKco4eaDtgKxxMcXDOCo88Y7dcYMR0H/QY="
 
 [[package]]
 name = "cargo-auditable"
-version = "0.6.4-1"
+version = "0.6.6-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/c/cargo-auditable/cargo-auditable-0.6.4-1-x86_64.pkg.tar.zst"
-sha256 = "1ff68cfb8017bf69f3f8e343e5bc2002ed23a54411bba9de3da519fbc2c7126b"
-signature = "iQIzBAABCAAdFiEEFl4P98SMIm4ew2On+DQkgks+S5AFAmY8gRUACgkQ+DQkgks+S5CZ9g/+JHMQw7uO9yWQ2gcmJreqFw7WUZurgIWVDnjGJj98Oq/sbmNe+hoC15NOaOf24rsR09yx+diFk0+utEK6iz5BGnEnX2Z1MQnKMZHB2O6X+f9biA/xmZw6lgk3AmkSzeFwxPwyXX8/DoPTjqd4UrY/2gfYOoH33iGP4qC6JC2rZjX9M8vtnS/nh6zZdLQls4V6DIBIrvZJDzO4NM2fItsuyCoq6zUxOWYJbrP2vv3XFvGNzaWtSzosspFqK5VR6E+0l0cexlXXHXcHeADp6nk0zDedzOzHMRtxv2MOEMBtoDDIx4R1x5pKXwpTtlZrCvpa0lDemEt0h9VMiTPWm/ygE2vn3RFl4+Ho2mXlxYSUksG3JZCd0iVLPM+OC7N6wMq5z08ObG+D5qTAF/YWn1t0v4pBBIl/6ADW7+jtGk7eeatSvj77Sao0PlqNy7w7icceuF09qsMduxhN66N81hLBTX2rhT77pQ10qRDb9fx7vXAvAdXU0gp+ZF6f64czyP0yqETiTHcaLd0oCNU1ISgjh77E2vf6VQpaTDzx4PjwGkeboa1AjpbMGbGFfAH9jO9l+9hxVt/h0TIMAsZ7QFh02yS3m0gJGUusrisVpkTBmzqPkEMgJecGb/nv7TZyGsMvtQmzq2QCZmgoDDH2yYrvgQ107jgfmZwAL8Fffsg0sQA="
+url = "https://archive.archlinux.org/packages/c/cargo-auditable/cargo-auditable-0.6.6-1-x86_64.pkg.tar.zst"
+sha256 = "e90c6459cb4505ed19bb25acc9b00fdaf4130c804d360ce5dfcb3c4d8c9d0b0f"
+signature = "iQIzBAABCAAdFiEEFl4P98SMIm4ew2On+DQkgks+S5AFAmdC57AACgkQ+DQkgks+S5BwvA//Tf5hrUN/mlj0Fi2HPIphu/XdLnOGmwRs5rz8ZHZyFxLb2tStn/kSD1RrwMizj5v/i7rySxm9aDerypJK8FAtRz7ArYCiSOKMv/N9rJ8apM9EyPt5FdS1tz9pkLe3yiakYZZsQjSprjsn6Dms0I9Nbnfkb+RMVNW+pr6WNOdhC+cGB9JAKZK+mrtjsIobqi2T0M/fG+KcIUvo8kM2dj6o20mNYp2qN0t01Yrvf5WiR5wJUuF1qutRqGUr+wGDKLK2dz/GnV81TdQr9T8SnvNVwD6y5mMW1H0WOruoyD2l2ktvEnVgOD5NDffy99+ki1fx4rqqK2c8LAomBMhiPZiuhM3a2dlrTqdierXfT/3QS/mlasGrNDDziDRCQZjJ+gC6p+Yg8ggBP+oNVMXi0OzWovitkmpY6LCN0ONYhihHM0x7HrVs2I6v7KTKjZmp+ttIsVeeG0MHy7HTUc1/GcDbnwEzF4p46vS1P0cBrQX2bSBzw7KVotZ0RO6AYgj6IoW8pNOFrAmozDkN+7DRYH3Oa7XYRD/CHU7WiGEQQZYXPaiMHJby6qpkRJE7Timma4kbOHN8zj3t6lPCek8I8XET7WrNSDyukGCSKi0+mh4fX9LLxXEqqEUjaIxdx6zqF0GjGUGzAjPThPlTITDejJRBAwQYbKLBs+Zzgv6qqAiVU/k="
 
 [[package]]
 name = "cargo-deb"
-version = "2.7.0-1"
+version = "2.10.0-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/c/cargo-deb/cargo-deb-2.7.0-1-x86_64.pkg.tar.zst"
-sha256 = "3c8507b1ad3802f1710d8fff1d35f32dba49e50c91c51cab6f2ad4e0d494ecff"
-signature = "iQIzBAABCAAdFiEEFl4P98SMIm4ew2On+DQkgks+S5AFAmbxc8gACgkQ+DQkgks+S5DEghAAvKaR7T/dEq6ERPoTFcmgEKzhtvPGkWtCIRGr4j+E42aKCnl6aPnlWodqAyTnhmUroMoTALcFB/bh7giULKeS7asy9Zbfd4JFMA/NShHYbRLHPk4BRiy2pgsQ+bOK9VeGAbfbpDOVBvRHtO2edqGbbVMkQoirq6rAjWI+WkJi59spEI4tz5wUTknKEiddRY2kj/IaKZi7ldx+yQtGGibOrzLx8oPQ/PwszSYvPDNV91xAE8Pl5dCjct8FMgIJHS+A/G24PGiucxmOZFcQ6upL95Gouy623fv96+vB2gEKAgyO+XlZykh6xnY8ZYuSbsyhq1wT1PRO6sqnnyM36nsnyUAH9jPVDYWsJ5UwS69OJa9WW56g9vs+5dNWTyo8nk5wtT66TGjpcxs/5Yca+YveoYjXGAHCR6p9mcH2mBl5uImn713+TrCZbr9/WoS2EFrOGLcwzHeMimpJzYtFlC1Xla6ksbJFtEETLUJ7k8NHQn35OWp5jkgnvZY9Ac491p7eMLb52JFV52ZlxsooHQeuvz/e54RFdT3IDA5BhbARltGe8O68mOaUA/KHae8oZDXq0WD5q+MqQceADl/HEYnS2EviG1JtUssAY/1b9654XX7USZ/TkZuZcw19EW5vfkjBNRBnMBEh0sR+aQf8S5xeFWSU3Z/9BQWUn4+toq39AXU="
+url = "https://archive.archlinux.org/packages/c/cargo-deb/cargo-deb-2.10.0-1-x86_64.pkg.tar.zst"
+sha256 = "5d2ce31352c034de44176c00c4f8413d9da78b486b14d4f8f5376994b26c22d9"
+signature = "iQIzBAABCAAdFiEEFl4P98SMIm4ew2On+DQkgks+S5AFAmeBbA0ACgkQ+DQkgks+S5CtIQ/+LQ/AbqEir+vdAy12J9ZmcuYuN7X77a6HoiYpqaEDfbNqJDp5xoBBQK+Ub64uqHl+KiYj6p38yD2gVLG6cT2WWgTXkz/a4fHs2tZPUfcvxKkRkqET1DzHbWAHGwnvw6lse7XZG5kAWzMBdoLAuqcYHzn82t9qI/cBRSlUQavE3c0FOpLN7mRJwIklklzx3Aqb4hpgWFelTj6ujOK0AgQQj0Zu0oz4teq+ouU68vhBMa72Bvo/J61bz8ksf+dhu5TWyZZ7/O44QVAh+aBmYPi2a0INs7AC8VCYEMHHecnI3Pe9NQwPzUPN+AyXI26cDbRAqdctr8YDnLRD7yKBpNFL9mazOJ64H+DNv3LPTWBfl6v63E2bc4Is0yw1037BaaEvDPEt5GRX0rC2XxDGzKjlM4bHOuaxfOgv1+5wHx24vUv51MDAB2l6JlhQBZwzvJa8B/qjaDxIh/rhyFUudbVKNcZB5JOALil7wD5X+aNCknYfGuKy+1qq0c3FHY59TW0+X4Fvbyw11BHOgr1Fcj1/o3XrQpc9jZX57QBDFmJL+a0Xd3yfFgLnj3CxDTvD0nVolTOEUWc7Tsc1em8fpXvVJW04WaGXzeaVWn9OzlO5ZIpjIIBFihJaoT1tVQ5P9yibfLk3GG12oc3uuUPK1ical6fIFFGariOrsYfA2Qo8WCc="
+
+[[package]]
+name = "coreutils"
+version = "9.6-2"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/c/coreutils/coreutils-9.6-2-x86_64.pkg.tar.zst"
+sha256 = "2193adec1f6e09f999c761a3d03c5087bd928394d63df1f4e090f41a52813ad3"
+signature = "iQEzBAABCAAdFiEEW34/txt/EDKaHAOrdx32Yn7faB8FAmeMAmQACgkQdx32Yn7faB/yTAgAhqgYYHZNOkmiqA6pbQmSfm5PMzBoZyRjN/NsEazjUROpVPgZSqbvDAxYwt0nnQ7qplJWemDSBU+2MahxmVYFRwEiDWEL1VT6o0V16Pck0sO60j5tcB4GY2XHaHVIAIpiZjkpVrt42agND34Kg2lVy6Cbr9FPqzgxYxdxnpxOhFTp/vl6SDXYH6eZ5yMCrrN+0k6rTiPFQpCmo3+t9t8bWWGUObCwQq9qO0J3nbd8zRDLMMzlHy3zhChTfU6uEHSmiXN5SGto7tfLNrAIix3Fhasi7ZLuM0ia0AB3m3Iw3t9mafrBb9AwZcJ9jM5khssENmCGKkw+48+hSm3cWNoghg=="
 
 [[package]]
 name = "db5.3"
@@ -83,11 +83,11 @@ signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZt6oQl8UgAAAAAAuAChpc3N
 
 [[package]]
 name = "gcc"
-version = "14.2.1+r134+gab884fffe3fc-1"
+version = "14.2.1+r134+gab884fffe3fc-2"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/g/gcc/gcc-14.2.1+r134+gab884fffe3fc-1-x86_64.pkg.tar.zst"
-sha256 = "efcf9a912bb674205fe8cbc2f205ca3d64ec0e8e48700c74bac8952834dc4415"
-signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZuBXXV8UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaChhNAQC1+ckQFrMS0NCEB/MuyxouCmUQ0COinRuR6OvZ4qoYhQD/X5l3opAxR9lO8dtqfoLbeGUqOwQUqzZHG8gF4Y8z0wQ="
+url = "https://archive.archlinux.org/packages/g/gcc/gcc-14.2.1+r134+gab884fffe3fc-2-x86_64.pkg.tar.zst"
+sha256 = "31f017becbf1ff5d9f527ff4bbffc3e1813f789e586ccd417a021355cfcddca7"
+signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZ11m8l8UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaCpB5AQCHrUxRocTJkq8VeYZz49wvDubJU1XT718UGVvibkkOAwEAvqEgp87bqjrfE4WPu5yPWOPAC5UpS0+Y+ylX3Prc7wY="
 
 [[package]]
 name = "guile"
@@ -98,12 +98,28 @@ sha256 = "bf4d1b474045a88c7ad97b1ce56e8dd5786e5a10de02a8d33dc8f041edc8d01d"
 signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZnkshF8UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaCruHAQDnjJsHGhq4cae34rHS1z+Hr6yzjVQSxvA6SE9XpredlAD/cstobLSMUsHswxf5df94XkoDPJdJs44uXE/iu9gsgQg="
 
 [[package]]
+name = "iproute2"
+version = "6.13.0-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/i/iproute2/iproute2-6.13.0-1-x86_64.pkg.tar.zst"
+sha256 = "6d83ab08956572df93492f1a2e85b07dfffac11d809bffe16ffd0469669c420a"
+signature = "iHUEABYKAB0WIQQEKYl95fO9rFN6MGltQr3RFuAGjwUCZ4669gAKCRBtQr3RFuAGj815AP9Wof1uRq0O3m2pxcfzxgDl00LIACGOUtWP4cAqQxbHvwD/Q6R4l/CBCZKLeaXeP2dI2JxXeIZ0HkDWI+A6PJzIQAA="
+
+[[package]]
 name = "jansson"
 version = "2.14-4"
 system = "archlinux"
 url = "https://archive.archlinux.org/packages/j/jansson/jansson-2.14-4-x86_64.pkg.tar.zst"
 sha256 = "a67ab57d4a9b4caa2e718652c392345cdd9c2496d835ab1d0ff1e78ae4429fde"
 signature = "iNUEABYKAH0WIQQFx3danouXdAf+COadTFqhVCbaCgUCZjJful8UgAAAAAAuAChpc3N1ZXItZnByQG5vdGF0aW9ucy5vcGVucGdwLmZpZnRoaG9yc2VtYW4ubmV0MDVDNzc3NUE5RThCOTc3NDA3RkUwOEU2OUQ0QzVBQTE1NDI2REEwQQAKCRCdTFqhVCbaCpfCAP4sFnTjSEIn5wDbLWGZOivsWT2SWPG6AgofrnUjaK/UMAD9E2u6D7WJbVTYrvDhVUz3WN6k8bVB8ZODyoIF66GWEw0="
+
+[[package]]
+name = "libedit"
+version = "20240808_3.1-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/l/libedit/libedit-20240808_3.1-1-x86_64.pkg.tar.zst"
+sha256 = "f7888a3a880f16f172f71fd83b081988798ae8f57faa4abe3e8a7a30f00fc461"
+signature = "iQEzBAABCAAdFiEEW34/txt/EDKaHAOrdx32Yn7faB8FAmd1ZSYACgkQdx32Yn7faB8s+Qf+M5JqNn+fOWer/158BMRSB9PCCR2u047R4Iu4Os4eOne5q4Lw/Z6ox6KTgXHaOEEN0E6K/a6atOy7TrRS1sbx4+I0CGAsBQ7R2+oqyZpIiWE+jNydTsQsiN5jljFAHigoXhsnP5x96Ef9sTEcTsjE2cAtThmGj5v8h67kmGC/rEAffIDhfuZK9Yp/GJ2DkY/yzxKyrechYGQEmR28i7O6oiZGaURd8Ra0xe6jUjN35gXM13KeOyz9OR8VPvaZ7eP/RYEcvqjv2ZxeP6oRTzSz+EkqykbGFdVob0iRJ9pt7K0UUcz2rczcHPO2Cz5MiI2h85fQ6MQvsPfCAs0exTwPmQ=="
 
 [[package]]
 name = "libisl"
@@ -120,6 +136,22 @@ system = "archlinux"
 url = "https://archive.archlinux.org/packages/l/libmpc/libmpc-1.3.1-2-x86_64.pkg.tar.zst"
 sha256 = "10554706eb15ed2186fbd55fd5db8fa5919788ac9a75d26c0b9ef5bdfca9d470"
 signature = "iQEzBAABCAAdFiEEFRnVq6Zb9vwrc8dWek52CV2KUuQFAmaHCZwACgkQek52CV2KUuRjbAf/TmL9cCMXYTGsNmR2om6kT7XjczfZoFR9AM0FSTUNy5AuNZNUUCfm6ie6F4rFwHc3nETOSojScOZauZlcNiLrVriHYYFSZ8EhKiCJCo68a7KTbceBNoBuT6AEIpGMpIMti/cvWhu8VXl5JIRo8LNPBzDih05aCDUJ2nayKPYNHalDayu87sDXzJYXuzC8KD7XmUa7Kirn0ZpA4VZXc8CUjYYvn0wvRwLKQP4WMpszxmblQWjMVbQxh7dwC+gPtqIANVjoGKMRfr6QpT03XXIEaTBKbMsxeYFvwn+y2JN30t6oFI6LJADZ22VwimEzu06u+x9c+3+pr4k7Py43OCOGmg=="
+
+[[package]]
+name = "libsecret"
+version = "0.21.6-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/l/libsecret/libsecret-0.21.6-1-x86_64.pkg.tar.zst"
+sha256 = "cac903e0c44597f86c64304e0ef30160e78c24422568632d5344eafa5b409a98"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZ4hLEQAKCRC4rAhgDxCM3zGoAP9b1xNt81ABNpFiqBk0v1cIskGPzWhY8vzOGtemeub2GwEA+WUg67yUCkmNTHyQ+fx7J1O0XO4qDRoN89OKQ7ABsww="
+
+[[package]]
+name = "llvm-libs"
+version = "19.1.7-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/l/llvm-libs/llvm-libs-19.1.7-1-x86_64.pkg.tar.zst"
+sha256 = "44de8dac4c85c2297d8a8b9b4f8a71d422bd2452b6b0f442859f92c5319daad3"
+signature = "iQEzBAABCAAdFiEEhs/8qRjPOvRxR1iAUeixSKmZnDQFAmeLq+kACgkQUeixSKmZnDSQcgf/UE3HidSGyn485QxUdNk6ffxyRMIxQixiaMPVcFQlTCNoC2c3oN/Y9bp5qWN2Oydh5J17nVy6el5mpVzaSFrVA05cFP0eoOIy1RrlC2ko54icSmchRyD1bGHfwBNlurkCU5y1AQqbo+5Exfg31Vj5NsXdDst5E51WfP37/NxZ9holoXk17Lb5vcgQ/GTgmzEWL7Gt+CF5X0AkPCOejBtBrzcSWM2T4s6dGatM45PCTSWHzgLbi9RuZwd2y0jPZPPocvsmxoi1q0KhjteCXWJpn/HpksmiiRNIG1RN9uV7Vp9f0rVEoWaf1VbdzNyXrdoRFxdxg1Nt0en9VrwhMuX4Mg=="
 
 [[package]]
 name = "make"
@@ -139,24 +171,40 @@ signature = "iQJLBAABCAA1FiEEiee5MxxK59f699MFwTIpOVS75K0FAmaUdzsXHHNwdXB5a2luQGF
 
 [[package]]
 name = "musl-aarch64"
-version = "1.2.5-2"
+version = "1.2.5-3"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/m/musl-aarch64/musl-aarch64-1.2.5-2-x86_64.pkg.tar.zst"
-sha256 = "a127125a8b889341e8ee1d9a68b75b7afbc7af9a13e0203c460b5bf266084df3"
-signature = "iQJLBAABCAA1FiEEiee5MxxK59f699MFwTIpOVS75K0FAmaUdzwXHHNwdXB5a2luQGFyY2hsaW51eC5vcmcACgkQwTIpOVS75K3i7xAAgtV4szRrzrfudev6aAAIeGUMMmYRuzSjicbS8+2jMdJUTeWkHRpEWkA/f+T29ki9OlJAHzotThWREgetwkoXrovUfugb0MNY++u4Oo3N2Z72AS1ndweWy/0ewz/0sOuVn6NNfTek8BhXa9lzhPLbd+JLRHXqlt4gz6tS8ax9aiXuUqKIqjo00HTfwiMYyaUbRx83eJL/0549A2Rq72Ju7vDIBnRe2Bf5brYkRBluVbOKgEEEDJ63pwzzw2K694YJyIzGmeLf5ZKG2dVyQZ9RoR08bwMXGKt7qInijgbDozNp3GOdvVL/v4wMByc1TjqazycJmSgKqFALgLxBsxm9LjT+j2OCpz5imS4I1OecuJSO5bTHZNhkgE9rqsGdjVNUjLSgvQem/k8OdIWrnF5W7bfCZEI7EUI5qxAG3uh6jCG/LEJkjIuR7IN17sDtl50DcPpN/Sr4wcETXfoz1NNB3b8ZwBITkADBnDu+lmG2+x7pPXicZSVOPN8i1IYnq8r11Aw1GxOCXQZsGfsJgByjWYs5iD1Y/8JLlsw7aagwjZoh2bMGadlA+tzY83+2OP2Nq4Vrhwum96ec7vUoe3kKADJ0751IHW3+anqglMivyOXmngBObAcoWb/Q1HrTMTQy6SGemdM614Yw/h+tJizeOvugkqbX3gny7grDrIgmjRY="
+url = "https://archive.archlinux.org/packages/m/musl-aarch64/musl-aarch64-1.2.5-3-x86_64.pkg.tar.zst"
+sha256 = "dd3c34fce98e897b0d231974477baf61732adb5bca7ba0c5671e2c7e5e23b7bf"
+signature = "iQIzBAABCAAdFiEEM+u4qOHFZTZFsSMqRaZQ4mOMU20FAmeRK5AACgkQRaZQ4mOMU22xPg/+MKTFrbAk5iKKgFcsC/7NnQza/hMZagBw0NNfDcJPch6iSOoqQIQlbHpu5zHWbWfRYz3OuE7afUsENd9igRiu4P8hx6hRRsxqJXsTEO+9GDJsGE223ll/gU56aLiMe+wDkAqNZ4GeoZ6KGQAiO7zv6mncr/UgzGkDRxLAdIjy+jW2tXhX9x/YB+eCu1dKgRrjyb2je92qhC8q1/znKEDzeh8rSuD8UVdltDsqVPKE9/lHVu6cfYmWtPAzHTBVpTRc0PvskC9VuAQvnBD456+IkTzFz8VdcEyyAUm4m59kKCg+kkt9KApgYjbPDLngyxlGA99PG/8v3bqqwnLVMrfrZNu5SPq8J4GDDtaUgzJ20/7u3RcndG1hKF6yhoB9sUZ0MlHw2ATnzBSEObV2Fcn/ZgpnJl8GUBTWYHCoWysPS0wNRQUKCixDZhIjJzA40etvqvpxKvYAAn9uJ4F1DrQ2lG2g5WaMQ7wBMQlPyDSSf6p/QRjq+l04NW2krq7FhM5RybEuuaYh1o0zN+w5QRCa6FDp3lE3zWeUP1mosuv0ScbghCBlRa7QKX+HlCUgMRijRq2yIpd6vQV58y3YfHbeZFaTFjymHSo/kPDzvt12gv5s3zkhsN99e8itPCU4WjmBQr4ZP9wQPBtRF88xkuKOcOnZoPvJ1TO2oPe+hZZE8zE="
 
 [[package]]
 name = "perl"
-version = "5.40.0-1"
+version = "5.40.1-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/p/perl/perl-5.40.0-1-x86_64.pkg.tar.zst"
-sha256 = "7f5eff8f1e8938ffb60e57ef520226390e81c7a2174d7a2a172ab2bcaa613ad7"
-signature = "iQEzBAABCAAdFiEEFRnVq6Zb9vwrc8dWek52CV2KUuQFAmbUUX4ACgkQek52CV2KUuQPtggAkTSE9Z1Qrd3viW7G4Ft56ltkYp+Sd0J+V7xlTVxm97KvCMOaVlMD7ACDJibpOOVsTCzqHIkVFPWshpF4dgTL+8rxT1xugOEi7IWp80j/LcIb62aqMVwdgvDnkKkajpLt+nGI7WIsPedFgoNA4KR+HAO5mtp7FP/boA/3F2YtLxVfZjjHhXmHJQpr82UT3/RlCWK1ttnyScqyqBm+OQ4ar+8q7uFZaQ1v9HeUWh3UXqRG16DRA2muVwu7iSZOj8pqchtaX3iPlQpTl0Jcr0506UQYwwJGChGkDWiyCc2eRXc10Dy1zYfFmSWfBLEtPuVdQWAFugh94uAeZ3MFlXFajQ=="
+url = "https://archive.archlinux.org/packages/p/perl/perl-5.40.1-1-x86_64.pkg.tar.zst"
+sha256 = "25058b8e980e0826b43f80611a462cece566c51b1734e8e580f4fdea19d79c12"
+signature = "iQEzBAABCAAdFiEEFRnVq6Zb9vwrc8dWek52CV2KUuQFAmeNAbgACgkQek52CV2KUuTgJAgAikTI0w/WYucmxyBhkJ7HOPfq+c2n0dwHMQOmoiTP5sxw903jZZptUPm0Qj+3SCbWHdDI8oH/z/h0V+rbyc1RXg5nYX6S4hj0vFzSOQceFAcDamN9ZMvy7iE5oGCtj/ZDWszEnv0ikM0oj4EKOpwUT1K9mq+tQkNNu1fxCjPv8Z9mCQdfptBYH346z7K/RcGH7vc4czufhCZ/W8YSZpINBHL4aztSO/Roh1Fb/EIZ6wIb3s9GvNXA5O3HiK3PrODog7yydbvmdmDRMR3cT07oFV8FJwYZpRb0S+X5zywlNfv/BXbG96MEj19FPDpgnUtrkFoJJ76tC+nWFy81ht2sfg=="
 
 [[package]]
-name = "rustup"
-version = "1.27.1-1"
+name = "rust"
+version = "1:1.84.0-1"
 system = "archlinux"
-url = "https://archive.archlinux.org/packages/r/rustup/rustup-1.27.1-1-x86_64.pkg.tar.zst"
-sha256 = "2e16b8a3f4b6661bbcbce73a305b8c540bb809558918c5164502ce38116a0734"
-signature = "iQIzBAABCAAdFiEEj8FaBklQqZ3RvRTdOeS4d+YuuRUFAmY5nB0ACgkQOeS4d+YuuRVqCw/+OVk7uMIEgmMBAq+FRTKBhXVOKHVtkWAoakaxHOhlm9SuYVDoHXYansQbggMfEOE/8Hmgz5dwrpt9CphNe9eMr/eTx6dr7EH1v5tCPgUtn51+yRQ+P1e36FSSD81ZKSbY3viWZkgtfFFoZlcT5InwVDgQVOuKIpYX4N4LEvBwiXfjTohaNYUPjV1BLEEToEmi8DiRvOQcAXpI38ey7yRt2Yy36Bx1f1DiLkAUMa0KMAPRNEew0PrSH8aLIFYxMByq+6YgtVJMEdRzFYHkGIWHJ8ITUGj5X+/o0RAs987TgkbwO21exl04YNDqFoFXEN0LkqpFZ19RMWYqPFyoCTFCdv6vcoSQXZp7Kr6h2Ks4o30OE8aOb8GknKuPrABKXBxZKSAAcLMlXs/CETt/W+nZ8JHJfq134L/kq+bdJwmP/JB0RbsvNnG5rbKipKfbDl1rjZGR44LEGbK1dXd3j4XSorAs2vlWaYB9A0HNDOpvkz8V/8VLQ4Xq+YVPV0D5vCRT5a911TdF5BMZZFLYztrcWil6Kohx32qvljh81LHgKdHMZgbALjWvHx6Ufe/R9PydAPV6VWuCiMHUwRrrAb+ASIjzaHzKm+4KQ91+KbcFri5LMQHEndJOyNAmTXbfB7qgDwZ0dJJmKBFYG8ihgzD6b8s8dI7ErDAupKLUYQy71Ic="
+url = "https://archive.archlinux.org/packages/r/rust/rust-1:1.84.0-1-x86_64.pkg.tar.zst"
+sha256 = "6067c812b30da73bc9685883bb69e9e8144e8202f796215a29226817b65e160a"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZ4BnLgAKCRC4rAhgDxCM3xIjAQC29nHh09xjOKgB+aOoxM/c9eOfmowUF4S9RmG09zNjzQEAg0WCyYJ7ebHITrwhkctDYBdMYPsakDdHnKzWju+4eQ0="
+
+[[package]]
+name = "rust-aarch64-musl"
+version = "1:1.84.0-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/r/rust-aarch64-musl/rust-aarch64-musl-1:1.84.0-1-x86_64.pkg.tar.zst"
+sha256 = "8d5507622046e655f11e96771a01c1f10757052948ad22e03dca9c56a5e23486"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZ4BnMgAKCRC4rAhgDxCM32P7AQCWkDnNQmPjYMOkJ5SFhLOqY/Sc2QUQQXnwmJOBs+p95QEAt04v0+WsNqwuYakALsSAX/aKqWjhkLW9+d4CzH0YCAw="
+
+[[package]]
+name = "rust-musl"
+version = "1:1.84.0-1"
+system = "archlinux"
+url = "https://archive.archlinux.org/packages/r/rust-musl/rust-musl-1:1.84.0-1-x86_64.pkg.tar.zst"
+sha256 = "29286f1999de5128e259570fa1091b89da35db4cc48417f66dd52281cd2bbd47"
+signature = "iHUEABYKAB0WIQSDvIiJNRtd67toQW64rAhgDxCM3wUCZ4BnMAAKCRC4rAhgDxCM3y2kAQDQi728aZMO7MFkrgQRNQdbszcfSQdAA2Rqe68p7hg9oQEAtI6oacZvZZuK0cMEjAtBHoZMYEakHv9eMl9EiDBf1gc="
