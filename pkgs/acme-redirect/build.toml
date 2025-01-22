@@ -1,15 +1,15 @@
 [meta]
 repo = "https://github.com/kpcyrd/acme-redirect"
 version = "0.7.0"
-suffix = "~kpcyrd0"
+suffix = "~kpcyrd1"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd0_amd64.deb"
-checksum = "sha256:02a9c6ac4ee9e3403233932658ab763805f4f97c0204a4a9667fd4820089388e"
+path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd1_amd64.deb"
+checksum = "sha256:d29e1f0dd20354a0684234b10fc5ae0307bf05730001bae4f3678ba15b1a8d2c"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd0_arm64.deb"
-checksum = "sha256:7925660904e69d6a2ff1720d5d4d508cf711e8a0fcb320ebc78047fb4c1dbaf3"
+path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd1_arm64.deb"
+checksum = "sha256:b1333d1594c6c79749c4f08e87b8d0c909a35a1b6618cdeaf1079055e74dc005"
 
 [build]
 cmd = """
@@ -17,15 +17,6 @@ set -e
 
 # 2024-01-01
 export SOURCE_DATE_EPOCH=1704067200
-
-# configure the right linker for cross compile
-mkdir -vp ~/.cargo
-printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
-
-# select a specific Rust release so it's documented which one has been used
-rustup default 1.81.0
-rustup target add aarch64-unknown-linux-musl
-rustup target add x86_64-unknown-linux-musl
 
 cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl -- --features vendored
 cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl -- --features vendored
