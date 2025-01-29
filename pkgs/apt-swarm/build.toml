@@ -1,0 +1,23 @@
+[meta]
+repo = "https://github.com/kpcyrd/apt-swarm"
+version = "0.3.0"
+suffix = "~kpcyrd0"
+
+[[checksums]]
+path = "target/x86_64-unknown-linux-musl/debian/apt-swarm_0.3.0~kpcyrd0_amd64.deb"
+checksum = "sha256:b8f6d6e6d26d85eee3e6064b5c2fa915aad8a70d26d35fee9f2afc46488dd807"
+
+[[checksums]]
+path = "target/aarch64-unknown-linux-musl/debian/apt-swarm_0.3.0~kpcyrd0_arm64.deb"
+checksum = "sha256:b71ebae26270f37e9cc7224c758709ca0bc6f3eb9ceac7e3c26f20e4b43ec450"
+
+[build]
+cmd = """
+set -e
+
+# 2024-01-01 - was a good year, so keeping it
+export SOURCE_DATE_EPOCH=1704067200
+
+cargo deb --locked --cargo-build 'auditable build' --section utils --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --section utils --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+"""

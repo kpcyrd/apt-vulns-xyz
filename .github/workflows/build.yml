@@ -18,6 +18,7 @@ jobs:
       matrix:
         pkg:
           - acme-redirect
+          - apt-swarm
           - authoscope
           - sh4d0wup
           - spytrap-adb
