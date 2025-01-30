@@ -43,6 +43,7 @@ To host your repository publicly, you need to upload `dists/` and `pool/` to a w
 The following packages have been fully integrated into the latest tooling:
 
 - [x] acme-redirect
+- [x] apt-swarm
 - [x] authoscope
 - [x] sh4d0wup
 - [ ] sn0int - due to ring 0.16.20 and libseccomp

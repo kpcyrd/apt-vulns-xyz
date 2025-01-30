@@ -1,0 +1,13 @@
+[container]
+image = "docker.io/library/archlinux"
+
+[packages]
+system = "archlinux"
+dependencies = [
+    "cargo-auditable",
+    "cargo-deb",
+    "musl",
+    "musl-aarch64",
+    "rust-aarch64-musl",
+    "rust-musl",
+]
