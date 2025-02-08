@@ -1,15 +1,15 @@
 [meta]
 repo = "https://github.com/kpcyrd/acme-redirect"
-version = "0.7.0"
-suffix = "~kpcyrd1"
+version = "0.7.1"
+suffix = "~kpcyrd0"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd1_amd64.deb"
-checksum = "sha256:d29e1f0dd20354a0684234b10fc5ae0307bf05730001bae4f3678ba15b1a8d2c"
+path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.7.1~kpcyrd0_amd64.deb"
+checksum = "sha256:3892b92e94f7707b7e57d1aa2f830fd54379be74a2b559a0f5ea5c8cb6ed2910"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.7.0~kpcyrd1_arm64.deb"
-checksum = "sha256:b1333d1594c6c79749c4f08e87b8d0c909a35a1b6618cdeaf1079055e74dc005"
+path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.7.1~kpcyrd0_arm64.deb"
+checksum = "sha256:62828c57c3636283b440fff05cda568b3f1e57e6b622e5c0137482c90076fd82"
 
 [build]
 cmd = """
