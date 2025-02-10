@@ -57,7 +57,7 @@ git clone https://github.com/kpcyrd/apt-vulns-xyz
 cd apt-vulns-xyz
 git checkout acme-redirect-0.7.0_kpcyrd0
 cargo run -- build acme-redirect
-sha256 ./build/acme-redirect/target/*-unknown-linux-musl/debian/acme-redirect_*.deb
+sha256sum ./build/acme-redirect/target/*-unknown-linux-musl/debian/acme-redirect_*.deb
 ```
 
 Old versions and packages that don't build with the new tooling yet have been imported but can't be reproduced (without a significant amount of effort).
