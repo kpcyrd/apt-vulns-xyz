@@ -52,6 +52,14 @@ The following packages have been fully integrated into the latest tooling:
 
 They are expected to be bit-for-bit independently reproducible from source code, check the corresponding git tag.
 
+```sh
+git clone https://github.com/kpcyrd/apt-vulns-xyz
+cd apt-vulns-xyz
+git checkout acme-redirect-0.7.0_kpcyrd0
+cargo run -- build acme-redirect
+sha256 ./build/acme-redirect/target/*-unknown-linux-musl/debian/acme-redirect_*.deb
+```
+
 Old versions and packages that don't build with the new tooling yet have been imported but can't be reproduced (without a significant amount of effort).
 
 ## Dependency tree vulnerability scanning
