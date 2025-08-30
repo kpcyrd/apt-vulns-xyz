@@ -1,15 +1,15 @@
 [meta]
 repo = "https://github.com/spytrap-org/spytrap-adb"
-version = "0.3.3"
+version = "0.3.5"
 suffix = "~kpcyrd0"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/spytrap-adb_0.3.3~kpcyrd0_amd64.deb"
-checksum = "sha256:50bb3badf52bf3a3bd3a51bf134d4f5735a3a9017ac7a859091925dba4afab7f"
+path = "target/debian/spytrap-adb_0.3.5~kpcyrd0_amd64.deb"
+checksum = "sha256:abdb29221a17369629617e730cfa34743c78eadce3d9cf677df64970993b24d7"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/spytrap-adb_0.3.3~kpcyrd0_arm64.deb"
-checksum = "sha256:d3d96731decf12489960b16b5d3c4f6cd393ad4ad5f3dfeefbc984ffabe61643"
+path = "target/debian/spytrap-adb_0.3.5~kpcyrd0_arm64.deb"
+checksum = "sha256:b01d9ef17d3482a60b22b569883c654f8684420ad201ac1602229136d450f863"
 
 [build]
 cmd = """
@@ -18,14 +18,15 @@ set -e
 # 2024-01-01
 export SOURCE_DATE_EPOCH=1704067200
 
-# https://gitlab.archlinux.org/archlinux/packaging/packages/musl/-/merge_requests/1
-ln -s ../aarch64-linux-musl/bin/musl-gcc /usr/bin/aarch64-linux-musl-gcc
-# https://github.com/kornelski/cargo-deb/issues/157
-mkdir -p .cargo && touch .cargo/config.toml
+# configure the right linker for cross compile (workaround 2025-08-30 to ship a security update)
+mkdir -vp ~/.cargo
+printf '[target.aarch64-unknown-linux-musl]\\nlinker = "/usr/aarch64-linux-musl/bin/musl-gcc"\\n' > ~/.cargo/config.toml
 
-cargo auditable build --verbose --release --locked --target aarch64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+# select a specific Rust release so it's documented which one has been used
+rustup default 1.89.0
+rustup target add aarch64-unknown-linux-musl
+rustup target add x86_64-unknown-linux-musl
 
-cargo auditable build --verbose --release --locked --target x86_64-unknown-linux-musl
-cargo deb --no-build --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """
