@@ -1,22 +1,22 @@
 [meta]
 repo = "https://github.com/kpcyrd/acme-redirect"
-version = "0.7.1"
+version = "0.8.1"
 suffix = "~kpcyrd0"
 
 [[checksums]]
-path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.7.1~kpcyrd0_amd64.deb"
-checksum = "sha256:3892b92e94f7707b7e57d1aa2f830fd54379be74a2b559a0f5ea5c8cb6ed2910"
+path = "target/x86_64-unknown-linux-musl/debian/acme-redirect_0.8.1~kpcyrd0_amd64.deb"
+checksum = "sha256:124cf6147b61984377ed7e0b07ac372ac54eb134349622e4ab68de4b85a663a3"
 
 [[checksums]]
-path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.7.1~kpcyrd0_arm64.deb"
-checksum = "sha256:62828c57c3636283b440fff05cda568b3f1e57e6b622e5c0137482c90076fd82"
+path = "target/aarch64-unknown-linux-musl/debian/acme-redirect_0.8.1~kpcyrd0_arm64.deb"
+checksum = "sha256:7b7964306ee1d86a7383946366c89297c0e91103942299e70ea3902624b14445"
 
 [build]
 cmd = """
 set -e
 
-# 2024-01-01
-export SOURCE_DATE_EPOCH=1704067200
+# 2026-01-01
+export SOURCE_DATE_EPOCH=1767225600
 
 cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl -- --features vendored
 cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl -- --features vendored
