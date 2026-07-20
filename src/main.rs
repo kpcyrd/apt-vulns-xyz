@@ -435,7 +435,7 @@ fn main() -> Result<()> {
 
                 if audit && built == Some(true) {
                     for pkg in config.checksums {
-                        let path = format!("build/{name}/{}", &pkg.path);
+                        let path = format!("build/{name}/{}", pkg.path);
                         let audits = audit_deb(&path)?;
 
                         if !audits.is_empty() {
