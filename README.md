@@ -105,11 +105,9 @@ export SOURCE_DATE_EPOCH=1704067200
 
 # https://gitlab.archlinux.org/archlinux/packaging/packages/musl/-/merge_requests/1
 ln -s ../aarch64-linux-musl/bin/musl-gcc /usr/bin/aarch64-linux-musl-gcc
-# https://github.com/kornelski/cargo-deb/issues/157
-mkdir -p .cargo && touch .cargo/config.toml
 
-cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
-cargo deb --locked --cargo-build 'auditable build' --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --section utils --deb-version "${DEB_VERSION}" --target aarch64-unknown-linux-musl
+cargo deb --locked --cargo-build 'auditable build' --section utils --deb-version "${DEB_VERSION}" --target x86_64-unknown-linux-musl
 """
 ```
 
